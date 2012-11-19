@@ -41,7 +41,10 @@ public class Zap extends JFrame { private static final long serialVersionUID = 1
         flower(g, -142, 300);
         flower(g, 306, 80);
         flower(g, 0, 0);
-      	 
+        Random ran = new Random();
+        flower(g, ran.nextInt(350), ran.nextInt(350));
+        flower(g, ran.nextInt(350), ran.nextInt(350));
+        flower(g, ran.nextInt(350), ran.nextInt(350));
       	 /////////////////////////////////	
 
       	 /////////////////////////////////	
