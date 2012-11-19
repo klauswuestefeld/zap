@@ -16,7 +16,7 @@ public class Zap extends JFrame { private static final long serialVersionUID = 1
 
 
 	Zap() {
-		setTitle("Zap - Oi Galera!!");
+		setTitle("Zap - Oi Galera!");
 		setResizable(true);
 	    setBounds(100, 50, 500, 400);
 	    setExtendedState(JFrame.MAXIMIZED_BOTH);
