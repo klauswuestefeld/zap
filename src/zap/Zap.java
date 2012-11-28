@@ -36,15 +36,14 @@ public class Zap extends JFrame { private static final long serialVersionUID = 1
 		g.clearRect(0, 0, 5000, 4000);
 
 		
-        flower(g, 97, 39);
-        flower(g, -97, -39);
-        flower(g, -142, 300);
-        flower(g, 306, 80);
-        flower(g, 0, 0);
+      
         Random ran = new Random();
-        flower(g, ran.nextInt(350), ran.nextInt(350));
-        flower(g, ran.nextInt(350), ran.nextInt(350));
-        flower(g, ran.nextInt(350), ran.nextInt(350));
+        flower(g, ran.nextInt(1000), ran.nextInt(350));
+        flower(g, ran.nextInt(1000), ran.nextInt(350));
+        flower(g, ran.nextInt(1000), ran.nextInt(350));
+        flower(g, ran.nextInt(1000), ran.nextInt(350));
+        flower(g, ran.nextInt(1000), ran.nextInt(350));
+        flower(g, ran.nextInt(1000), ran.nextInt(350));
       	 /////////////////////////////////	
 
       	 /////////////////////////////////	
@@ -54,16 +53,23 @@ public class Zap extends JFrame { private static final long serialVersionUID = 1
 
 	void flower(Graphics g, int x, int y) {
 		Random ran = new Random();
+		int size = ran.nextInt(5)+1;
+		randomColor(g);
+		g.fillRect(x, y, 9*size, 200*size);
+          g.fillRect(x, y + 90*size, 80*size,30*size);
+  		randomColor(g);
+          g.fillOval(x - 10*size,y -10*size, 40*size, 38*size);
+  		randomColor(g);
+      	 g.fillOval(x - 10*size,y -46*size, 40*size, 38*size);
+      	 g.fillOval(x - 10*size,y + 23*size, 40*size, 38*size);
+      	 g.fillOval(x - 50*size,y -10*size, 40*size, 38*size);
+      	 g.fillOval(x + 30*size,y -10*size, 40*size, 38*size);
+	}
+
+
+	private void randomColor(Graphics g) {
+		Random ran = new Random();
 		g.setColor(new Color(ran.nextInt(256),ran.nextInt(256),ran.nextInt(256)));
-		g.fillRect(x + 500, y + 400, 9, 200);
-          g.fillRect(x + 500, y + 490, 80,30);
-  		g.setColor(Color.yellow  );
-          g.fillOval(x + 490,y + 390, 40, 38);
-      	g.setColor(Color.red  );
-      	 g.fillOval(x + 490,y + 354, 40, 38);
-      	 g.fillOval(x + 490,y + 423, 40, 38);
-      	 g.fillOval(x + 450,y + 390, 40, 38);
-      	 g.fillOval(x + 530,y + 390, 40, 38);
 	}
 	
 
