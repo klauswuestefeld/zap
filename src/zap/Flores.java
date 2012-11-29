@@ -8,14 +8,14 @@ import java.util.Random;
 import javax.swing.JFrame;
 
 
-public class Zap extends JFrame { private static final long serialVersionUID = 1L;
+public class Flores extends JFrame { private static final long serialVersionUID = 1L;
 	
 	public static void main(String[] args) {
-		new Zap();
+		new Flores();
 	}
 
 
-	Zap() {
+	Flores() {
 		setTitle("Zap - Oi Galera!");
 		setResizable(true);
 	    setBounds(100, 50, 500, 400);
@@ -38,30 +38,22 @@ public class Zap extends JFrame { private static final long serialVersionUID = 1
 		
       
         Random ran = new Random();
-        
-        int flor = 1;
-        while (flor < 18) {
-        	flower(g, ran.nextInt(1366), 100);
-        	flor = flor + 1;
-        }
-        
+        flower(g, ran.nextInt(1000), ran.nextInt(350));
+        flower(g, ran.nextInt(1000), ran.nextInt(350));
+        flower(g, ran.nextInt(1000), ran.nextInt(350));
+        flower(g, ran.nextInt(1000), ran.nextInt(350));
+        flower(g, ran.nextInt(1000), ran.nextInt(350));
+        flower(g, ran.nextInt(1000), ran.nextInt(350));
+      	 /////////////////////////////////	
 
-	}
+      	 /////////////////////////////////	
 
-
-	private void pause(int millis) {
-		try {
-			Thread.sleep(millis);
-		} catch (InterruptedException e) {
-		}
-		
 	}
 
 
 	void flower(Graphics g, int x, int y) {
 		Random ran = new Random();
-		//int size = ran.nextInt(5)+1;
-		int size =1;
+		int size = ran.nextInt(5)+1;
 		randomColor(g);
 		g.fillRect(x, y, 9*size, 200*size);
           g.fillRect(x, y + 90*size, 80*size,30*size);
