@@ -6,14 +6,14 @@ import java.util.Random;
 
 import javax.swing.JFrame;
 
-public class Zap extends JFrame {
+public class CampoDeFlores extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public static void main(String[] args) {
-		new Zap();
+		new CampoDeFlores();
 	}
 
-	Zap() {
+	CampoDeFlores() {
 		setTitle("Zap - Oi Galera!");
 		setResizable(true);
 		setBounds(100, 50, 500, 400);
@@ -55,17 +55,9 @@ public class Zap extends JFrame {
 		}
 	}
 
-	private void pause(int millis) {
-		try {
-			Thread.sleep(millis);
-		} catch (InterruptedException e) {
-		}
-
-	}
+	
 
 	void flower(Graphics g, int x, int y, float size) {
-		Random ran = new Random();
-		// int size = ran.nextInt(5)+1;
 		randomColor(g);
 		rect(g, x, y, 9 * size, 200 * size);
 		rect(g, x, y + 90 * size, 80 * size, 30 * size);
