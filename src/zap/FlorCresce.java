@@ -6,14 +6,14 @@ import java.util.Random;
 
 import javax.swing.JFrame;
 
-public class Zap extends JFrame {
+public class FlorCresce extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public static void main(String[] args) {
-		new Zap();
+		new FlorCresce();
 	}
 
-	Zap() {
+	FlorCresce() {
 		setTitle("Zap - Oi Galera!");
 		setResizable(true);
 		setBounds(100, 50, 500, 400);
