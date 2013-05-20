@@ -4,12 +4,17 @@ import textgame.TextGame;
 
 public class Zapman implements TextGame {
 
-	private int position = 1;
-	private String[] mentos = new String[]{"O", ".", "."};
+	private int position = 3;
+	private String[] mentos = new String[]{".",".","O",".",".",".","."};
 	private boolean dead;
 
 	public String[] screen() {
-		String screen = thing(0) + thing(1) + thing(2);
+		String screen = "";
+		int i = 0;
+		while (i < mentos.length) {
+			screen = screen + thing(i);
+			i = i + 1;
+		}
 		return new String[]{ screen };
 	}
 
@@ -21,22 +26,22 @@ public class Zapman implements TextGame {
 		return mentos[column];
 	}
 
-	public void right() {
-		if (dead) return;
-		
-		mentos[position] = " ";
-		position = position +1;
-		if (position == 3) position = 0;
-		if (position == 0) dead = true;
-	}
+	public void right() { move(+1); }
+	public void left()  { move(-1); }
 
-	public void left() {
+	
+	private void move(int step) {
 		if (dead) return;
 		mentos[position] = " ";
-		position = position -1;
-		if (position == 0) dead = true;
+		position = position + step;
+		if (position == mentos.length) position = 0;
+		if (position == -1) position = mentos.length - 1;
+		if (mentos[position].equals("O")) dead = true;
 	}
 
+
+
+	
 	
 	
 	@Override
@@ -46,17 +51,14 @@ public class Zapman implements TextGame {
 
 	@Override
 	public void down() {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void space() {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void pass() {
-		// TODO Auto-generated method stub
 	}
 
 }
