@@ -12,35 +12,39 @@ public class ZapmanTest {
 	
 	@Test
 	public void rightFirst() {
-		screen("..OC...");
+		screen("..!<.o.");
 		game.right();
-		screen("..O C..");
+		screen("..! <o.");
 		game.left();
-		screen("..OC ..");
+		screen("..!< o.");
 		game.left();
-		screen("..T  ..");
+		screen("..T  o.");
 	}
 	
 	@Test
 	public void wrapScreen() {
-		screen("..OC...");
+		screen("..!<.o.");
 		game.right();
-		screen("..O C..");
+		screen("..! <o.");
 		game.right();
-		screen("..O  C.");
+		screen("..!  <.");
 		game.right();
-		screen("..O   C");
+		screen("..!   <");
 		game.right();
-		screen("C.O    ");
+		screen("<.!    ");
+		game.right();
+		screen(" <!    ");
+		game.right();
+		screen("  <    ");
 	}
 
 	@Test
 	public void leftFirst() {
-		screen("..OC...");
+		screen("..!<.o.");
 		game.left();
-		screen("..T ...");
+		screen("..T .o.");
 		game.right();
-		screen("..T ...");
+		screen("..T .o.");
 		
 	}
 

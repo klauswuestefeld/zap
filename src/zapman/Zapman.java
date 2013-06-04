@@ -5,8 +5,9 @@ import textgame.TextGame;
 public class Zapman implements TextGame {
 
 	private int position = 3;
-	private String[] mentos = new String[]{".",".","O",".",".",".","."};
-	private boolean dead;
+	private String[] mentos = new String[]{".",".","!",".",".","o","."};
+	private boolean isDead;
+	private boolean isSuper;
 
 	public String[] screen() {
 		String screen = "";
@@ -20,8 +21,8 @@ public class Zapman implements TextGame {
 
 	private String thing(int column) {
 		if (column == position) {
-			if (dead) return "T";
-			return "C";
+			if (isDead) return "T";
+			return "<";
 		}
 		return mentos[column];
 	}
@@ -31,12 +32,14 @@ public class Zapman implements TextGame {
 
 	
 	private void move(int step) {
-		if (dead) return;
+		if (isDead) return;
 		mentos[position] = " ";
 		position = position + step;
 		if (position == mentos.length) position = 0;
 		if (position == -1) position = mentos.length - 1;
-		if (mentos[position].equals("O")) dead = true;
+		if (isSuper) return;
+		if (mentos[position].equals("!")) isDead = true;
+		if (mentos[position].equals("o")) isSuper = true;
 	}
 
 
