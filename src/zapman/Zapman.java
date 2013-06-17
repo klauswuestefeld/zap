@@ -4,8 +4,9 @@ import textgame.TextGame;
 
 public class Zapman implements TextGame {
 
-	private int position = 3;
-	private String[] mentos = new String[]{".",".","!",".",".","o","."};
+	private int zapmanPosition = 3;
+	private int ghostPosition = 0;
+	private String[] mentos = new String[]{".",".",".",".",".","o","."};
 	private boolean isDead;
 	private boolean isSuper;
 
@@ -18,11 +19,28 @@ public class Zapman implements TextGame {
 		}
 		return new String[]{ screen };
 	}
+	
+	
+	@Override
+	public void pass() {
+		moveGhost();
+	}
+
+	private void moveGhost() {
+		if (ghostPosition < zapmanPosition)
+			ghostPosition = ghostPosition + 1;
+		if (ghostPosition > zapmanPosition)
+			ghostPosition = ghostPosition - 1;
+		checkDeath();
+	}
 
 	private String thing(int column) {
-		if (column == position) {
+		if (column == zapmanPosition) {
 			if (isDead) return "T";
 			return "<";
+		}
+		if (column == ghostPosition) {
+			return "!";
 		}
 		return mentos[column];
 	}
@@ -33,13 +51,18 @@ public class Zapman implements TextGame {
 	
 	private void move(int step) {
 		if (isDead) return;
-		mentos[position] = " ";
-		position = position + step;
-		if (position == mentos.length) position = 0;
-		if (position == -1) position = mentos.length - 1;
+		mentos[zapmanPosition] = " ";
+		zapmanPosition = zapmanPosition + step;
+		if (zapmanPosition == mentos.length) zapmanPosition = 0;
+		if (zapmanPosition == -1) zapmanPosition = mentos.length - 1;
+		checkDeath();
+		if (mentos[zapmanPosition].equals("o")) isSuper = true;
+	}
+
+
+	private void checkDeath() {
 		if (isSuper) return;
-		if (mentos[position].equals("!")) isDead = true;
-		if (mentos[position].equals("o")) isSuper = true;
+		if (ghostPosition == zapmanPosition) isDead = true;
 	}
 
 
@@ -58,10 +81,6 @@ public class Zapman implements TextGame {
 
 	@Override
 	public void space() {
-	}
-
-	@Override
-	public void pass() {
 	}
 
 }

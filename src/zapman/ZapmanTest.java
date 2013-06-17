@@ -7,48 +7,50 @@ import org.junit.Test;
 public class ZapmanTest {
 
 	private Zapman game = new Zapman();
-	
-	
+
 	
 	@Test
 	public void rightFirst() {
-		screen("..!<.o.");
+		screen(".!.<.o.");
 		game.right();
 		screen("..! <o.");
 		game.left();
-		screen("..!< o.");
+		screen("...T o.");
 		game.left();
-		screen("..T  o.");
+		screen("...T o.");
 	}
+	
 	
 	@Test
 	public void wrapScreen() {
-		screen("..!<.o.");
+		screen(".!.<.o.");
 		game.right();
 		screen("..! <o.");
 		game.right();
-		screen("..!  <.");
+		screen("...! <.");
 		game.right();
-		screen("..!   <");
+		screen("... ! <");
 		game.right();
-		screen("<.!    ");
+		screen("<..!   ");
 		game.right();
 		screen(" <!    ");
 		game.right();
 		screen("  <    ");
+		game.right();
+		screen("   <   ");
 	}
 
+	
 	@Test
 	public void leftFirst() {
-		screen("..!<.o.");
+		screen(".!.<.o.");
 		game.left();
 		screen("..T .o.");
-		game.right();
-		screen("..T .o.");
-		
 	}
 
+	
 	private void screen(String expected) {
+		game.pass();
 		assertEquals(expected, game.screen()[0]);
 	}
 
