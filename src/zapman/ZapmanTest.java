@@ -10,6 +10,26 @@ public class ZapmanTest {
 
 	
 	@Test
+	public void twoD() {
+		screen(
+			".!.<.o.",
+			".......",
+			".......",
+			".......",
+			".....o."
+		);
+	}
+	
+
+	@Test
+	public void leftFirst() {
+		screen(".!.<.o.");
+		game.left();
+		screen("..T .o.");
+	}
+
+	
+	@Test
 	public void rightFirst() {
 		screen(".!.<.o.");
 		game.right();
@@ -38,20 +58,34 @@ public class ZapmanTest {
 		screen("  <    ");
 		game.right();
 		screen("   <   ");
-	}
-
-	
-	@Test
-	public void leftFirst() {
-		screen(".!.<.o.");
+		game.right();
+		screen("    <  ");
+		game.right();
+		screen("     < ");
+		game.right();
+		screen("      <");
+		game.right();
+		screen("<      ");
 		game.left();
-		screen("..T .o.");
+		screen("      <");
+		game.up();
+		screen(
+			   "       ",
+			   ".......",
+			   ".......",
+			   ".......",
+			   ".....o<"
+			);
+		game.down();
+		screen("      <");
 	}
 
 	
-	private void screen(String expected) {
+	private void screen(String... expected) {
 		game.pass();
-		assertEquals(expected, game.screen()[0]);
+		String[] actual = game.screen();
+		for (int i = 0; i < expected.length; i++)
+			assertEquals("Line " + i, expected[i], actual[i]);
 	}
 
 }
