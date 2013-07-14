@@ -10,15 +10,23 @@ public class ZapmanTest {
 
 	
 	@Test
-	public void twoD() {
+	public void ghostMove() {
 		screen(
-			".!.<.o.",
-			".......",
-			".......",
-			".......",
-			".....o."
-		);
-	}
+				".!.<.o.",
+				".......",
+				".......",
+				".......",
+				".....o."
+			);
+		game.down();
+		screen(
+				"... .o.",
+				"..!<...",
+				".......",
+				".......",
+				".....o."
+			);
+}
 	
 
 	@Test

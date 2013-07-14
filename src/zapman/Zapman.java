@@ -55,10 +55,10 @@ public class Zapman implements TextGame {
 	}
 
 	private void moveGhost() {
-		if (ghostColumn < zapmanColumn)
-			ghostColumn = ghostColumn + 1;
-		if (ghostColumn > zapmanColumn)
-			ghostColumn = ghostColumn - 1;
+		if (ghostColumn < zapmanColumn) ghostColumn++;
+		if (ghostColumn > zapmanColumn)	ghostColumn--;
+		if (ghostLine < zapmanLine) ghostLine++;
+		if (ghostLine > zapmanLine)	ghostLine--;
 		checkDeath();
 	}
 
