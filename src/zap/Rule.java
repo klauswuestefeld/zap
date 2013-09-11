@@ -7,14 +7,14 @@ import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 
 
-public class Rule39 extends JFrame { private static final long serialVersionUID = 1L;
+public class Rule extends JFrame { private static final long serialVersionUID = 1L;
 	
 	public static void main(String[] args) {
-		new Rule39();
+		new Rule();
 	}
 
 
-	public Rule39() {
+	public Rule() {
 		setTitle("Rule");	  
 	    setResizable(true);
 	    setBounds(10, 10, _WIDTH, _HEIGHT);
