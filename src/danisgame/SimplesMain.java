@@ -18,7 +18,7 @@ public class SimplesMain {
 		System.out.println("Quanto é " + numero1 + " x " + numero2 + "?");
 		
 		long tempoAntes = System.currentTimeMillis();
-		String resposta = new Scanner(System.in).nextLine();
+		String resposta = pegaResposta();
 		long tempoDepois = System.currentTimeMillis();
 		
 		if (tempoDepois - tempoAntes > 5000)
@@ -29,6 +29,13 @@ public class SimplesMain {
 			else
 				vermelho("Errado! É " + numero1 * numero2);
 		
+	}
+
+	private static String pegaResposta() {
+			Scanner scanner = new Scanner(System.in);
+			String resposta = scanner.nextLine();
+			scanner.close();
+			return resposta;
 	}
 
 	private static void vermelho(String mensagem) {
