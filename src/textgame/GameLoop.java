@@ -11,6 +11,7 @@ public class GameLoop {
 	
 	private final TextGame game;
 	private GraphicCanvas canvas;
+	private int lastKey;
 	
 	
 	public GameLoop(TextGame game) {
@@ -26,6 +27,7 @@ public class GameLoop {
 
 	public void start()  {
 		while (true) {
+			handleLastKey();
 			game.pass();
 			refreshGraphics();
 			printToConsole();
@@ -34,6 +36,15 @@ public class GameLoop {
 	}
 	
 	
+	private void handleLastKey() {
+		if (lastKey == KeyEvent.VK_SPACE) game.space();
+		if (lastKey == KeyEvent.VK_UP) game.up();
+		if (lastKey == KeyEvent.VK_DOWN) game.down();
+		if (lastKey == KeyEvent.VK_LEFT) game.left();
+		if (lastKey == KeyEvent.VK_RIGHT) game.right();
+	}
+
+
 	private void refreshGraphics() {
 		canvas.refresh(game.screen());
 	}
@@ -50,12 +61,7 @@ public class GameLoop {
 		frame.setVisible(true);
 		
 		canvas.addKeyListener(new KeyAdapter() { @Override public void keyPressed(KeyEvent e) {
-			int tecla = e.getKeyCode();
-			if (tecla == KeyEvent.VK_SPACE) game.space();
-			if (tecla == KeyEvent.VK_UP) game.up();
-			if (tecla == KeyEvent.VK_DOWN) game.down();
-			if (tecla == KeyEvent.VK_LEFT) game.left();
-			if (tecla == KeyEvent.VK_RIGHT) game.right();
+			lastKey = e.getKeyCode();
 		}});
 	}
 	
