@@ -2,19 +2,19 @@ package zapman;
 
 class Square {
 
-	Ghost guest;
+	Object guest;
 
-	Square upper;
-	Square lower;
+	Square up;
+	Square down;
 	Square left;
 	Square right;
 	
 	
 	String draw() {
-		if (guest == null)
-			return " ";
-		else
-			return "!";
+		if (guest == null) return " ";
+		if (guest instanceof Ghost) return "!";
+		if (guest instanceof Hero) return "<";
+		return "?";
 	}
 	
 }

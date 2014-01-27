@@ -10,6 +10,7 @@ public class Zapman implements TextGame {
 	private static Square[][] maze;
 	
 	static Ghost ghost;
+	static Hero hero;
 
 	private static String[][] criarMentos() {
 		String[][] mentos = new String[5][];
@@ -34,13 +35,14 @@ public class Zapman implements TextGame {
 		}
 		
 		ghost = new Ghost(maze[0][0]);
+		hero = new Hero(maze[LINES/2][COLUMNS/2]);
 	}
 
 	
 	private static void connectWithUpperAndLeft(int line, int column) {
 		if (line != 0) {
-			maze[line    ][column].upper = maze[line - 1][column];
-			maze[line - 1][column].lower = maze[line    ][column];
+			maze[line    ][column].up = maze[line - 1][column];
+			maze[line - 1][column].down = maze[line    ][column];
 		}
 		if (column != 0) {
 			maze[line][column    ].left  = maze[line][column - 1];
@@ -83,17 +85,15 @@ public class Zapman implements TextGame {
 	}
 
 
-	public void right() { move( 0,  1); }
-	public void left()  { move( 0, -1); }
-	public void up()    { move(-1,  0); } 
-	public void down()  { move( 1,  0); }
+	public void right() { hero.right(); }
+	public void left()  { hero.left(); }
+	public void up()    { hero.up(); } 
+	public void down()  { hero.down(); }
 	@Override
 	public void space() {
 	}
 
 	
-	private void move(int stepLine, int stepColumn) {
-	}
 
 
 
