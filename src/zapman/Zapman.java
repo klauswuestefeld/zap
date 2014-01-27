@@ -33,6 +33,7 @@ public class Zapman implements TextGame {
 				connectWithUpperAndLeft(line, column);
 			}
 		}
+		connectBordersForWarping();
 		
 		ghost = new Ghost(maze[0][0]);
 		hero = new Hero(maze[LINES/2][COLUMNS/2]);
@@ -48,6 +49,32 @@ public class Zapman implements TextGame {
 			maze[line][column    ].left  = maze[line][column - 1];
 			maze[line][column - 1].right = maze[line][column    ];
 		}
+		
+	}
+
+
+	private static void connectBordersForWarping() {
+		for (int line = 0; line < LINES; line++)
+			connectFirstAndLastIn(line);
+		for (int column = 0; column < COLUMNS; column++)
+			connectBottomAndTopIn(column);
+		
+	}
+
+
+	private static void connectBottomAndTopIn(int column) {
+		Square top = maze [0][column];
+		Square bottom = maze  [LINES -1][column];
+		top.up = bottom;
+		bottom.down = top;		
+	}
+
+
+	private static void connectFirstAndLastIn(int line) {
+		Square first = maze [line][0];
+		Square last = maze  [line][COLUMNS -1];
+		first.left = last;
+		last.right = first;
 		
 	}
 
