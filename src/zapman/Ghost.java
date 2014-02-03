@@ -21,4 +21,9 @@ public class Ghost {
 		square.guest = this;
 	}
 
+	@Override
+	public String toString() {
+		return "!";
+	}
+	
 }

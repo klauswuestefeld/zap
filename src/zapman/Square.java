@@ -9,12 +9,14 @@ class Square {
 	Square left;
 	Square right;
 	
+	boolean hasFood = true;
 	
-	String draw() {
-		if (guest == null) return " ";
-		if (guest instanceof Ghost) return "!";
-		if (guest instanceof Hero) return "<";
-		return "?";
+	
+	@Override
+	public String toString() {
+		if (guest != null) return guest.toString();
+		if (hasFood) return ".";
+		return " ";
 	}
 	
 }

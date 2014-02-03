@@ -5,8 +5,7 @@ class Hero {
 	Square square;
 
 	Hero(Square square) {
-		this.square = square;
-		square.guest = this;
+		moveTo(square);
 	}
 
 	void right() { moveTo(square.right); }
@@ -16,9 +15,14 @@ class Hero {
 
 	private void moveTo(Square nextSquare) {
 		if (nextSquare == null) return;
-		square.guest = null;
+		if (square != null) square.guest = null;
 		square = nextSquare;
 		square.guest = this;
+		square.hasFood = false;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "<";
+	}
 }

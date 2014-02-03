@@ -1,3 +1,7 @@
+// To do:
+// Super mentos (pastilha)
+
+
 package zapman;
 
 import textgame.TextGame;
@@ -102,7 +106,7 @@ public class Zapman implements TextGame {
 
 
 	private String drawThing(int line, int column) {
-		return maze[line][column].draw();
+		return maze[line][column].toString();
 	}
 
 	
