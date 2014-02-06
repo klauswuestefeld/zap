@@ -38,7 +38,7 @@ public class Zapman implements TextGame {
 			}
 		}
 		connectBordersForWarping();
-		
+		maze[2][2].hasSuperMentos = true;
 		ghost = new Ghost(maze[0][0]);
 		hero = new Hero(maze[LINES/2][COLUMNS/2]);
 	}
