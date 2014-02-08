@@ -2,6 +2,7 @@ package zapman;
 
 class Hero {
 	boolean isSuper = false;
+	boolean isDead = false;
 	Square square;
 
 	Hero(Square square) {
@@ -14,7 +15,17 @@ class Hero {
 	void down()  { moveTo(square.down); }
 
 	private void moveTo(Square nextSquare) {
+		if (isDead) return;
 		if (nextSquare == null) return;
+		if (nextSquare.guest instanceof Ghost) {
+			Ghost pentelho = (Ghost)nextSquare.guest;
+			if (isSuper)
+				pentelho.die();
+			else {
+				die();
+				return;
+			}
+		}
 		if (square != null) square.guest = null;
 		square = nextSquare;
 		square.guest = this;
@@ -28,4 +39,9 @@ class Hero {
 		if (isSuper) return "S";
 		return "<";
 	}
+	void die() {
+		isDead = true;
+		square.guest = null;
+	}
+	
 }
