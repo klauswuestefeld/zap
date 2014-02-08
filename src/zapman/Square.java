@@ -18,5 +18,13 @@ class Square {
 		if (hasFood) return ".";
 		return " ";
 	}
+
+
+	void detachFromNeighbors() {
+		if (up    != null) up.down = null;
+		if (down  != null) down.up = null;
+		if (left  != null) left.right = null;
+		if (right != null) right.left = null;
+	}
 	
 }

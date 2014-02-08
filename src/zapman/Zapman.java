@@ -19,8 +19,8 @@ public class Zapman implements TextGame {
 	private static String[][] criarMentos() {
 		String[][] mentos = new String[5][];
 		mentos[0] = new String[]{".",".",".",".",".","o","."};
-		mentos[1] = new String[]{".",".",".",".",".",".","."};
-		mentos[2] = new String[]{".",".",".",".",".",".","."};
+		mentos[1] = new String[]{"!",".",".",".",".",".","."};
+		mentos[2] = new String[]{".",".",".","<",".",".","."};
 		mentos[3] = new String[]{".","H","H","H",".",".","."};
 		mentos[4] = new String[]{".",".",".",".",".","o","."};
 		return mentos;
@@ -38,9 +38,8 @@ public class Zapman implements TextGame {
 			}
 		}
 		connectBordersForWarping();
-		
-		ghost = new Ghost(maze[0][0]);
-		hero = new Hero(maze[LINES/2][COLUMNS/2]);
+
+		putThingsInMaze();
 	}
 
 	
@@ -54,6 +53,22 @@ public class Zapman implements TextGame {
 			maze[line][column - 1].right = maze[line][column    ];
 		}
 		
+	}
+
+
+	static void putThingsInMaze() {
+		for (int line = 0; line < LINES; line++) {
+			for (int column = 0; column < COLUMNS; column++) {
+				String thing = mentos[line][column];
+				Square square = maze[line][column];
+				if (thing.equals("<")) hero = new Hero(square);
+				if (thing.equals("!")) ghost = new Ghost(square);
+				if (thing.equals("H")) {
+					square.guest = "H";
+					square.detachFromNeighbors();
+				}
+			}
+		}
 	}
 
 
