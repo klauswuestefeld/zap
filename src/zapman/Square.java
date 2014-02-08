@@ -34,6 +34,13 @@ class Square {
 			guest = newGuest;
 			return true;
 		} else {
+			Hero hero = null;
+			if (newGuest instanceof Hero) hero = (Hero)newGuest;
+			if (guest instanceof Hero) hero = (Hero)guest;
+			Ghost ghost = null;
+			if (newGuest instanceof Ghost) ghost = (Ghost)newGuest;
+			if (guest instanceof Ghost) ghost = (Ghost)guest;
+			ghost.hit(hero);
 			return false;
 		}
 	}

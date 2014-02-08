@@ -38,12 +38,3 @@ class Hero {
 	}
 	
 }
-//if (nextSquare.guest instanceof Ghost) {
-//Ghost pentelho = (Ghost)nextSquare.guest;
-//if (isSuper)
-//	pentelho.die();
-//else {
-//	System.out.println("Hero vai se matar...");
-//	die();
-//}
-//}

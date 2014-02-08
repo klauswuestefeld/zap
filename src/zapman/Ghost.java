@@ -31,5 +31,12 @@ public class Ghost {
 		isDead = true;
 		System.out.println("Ghost morreu");
 	}
+
+	void hit(Hero maldito) {
+		if (maldito.isSuper)
+			die();
+		else
+			maldito.die();
+	}
 	
 }
