@@ -63,6 +63,7 @@ public class Zapman implements TextGame {
 				Square square = maze[line][column];
 				if (thing.equals("<")) hero = new Hero(square);
 				if (thing.equals("!")) ghost = new Ghost(square);
+				if (thing.equals("o")) square.hasSuperMentos = true;
 				if (thing.equals("H")) {
 					square.guest = "H";
 					square.detachFromNeighbors();

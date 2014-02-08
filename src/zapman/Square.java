@@ -10,11 +10,12 @@ class Square {
 	Square right;
 	
 	boolean hasFood = true;
+	boolean hasSuperMentos = false;
 	
-	
-	@Override
+
 	public String toString() {
 		if (guest != null) return guest.toString();
+		if (hasSuperMentos) return "o";
 		if (hasFood) return ".";
 		return " ";
 	}
