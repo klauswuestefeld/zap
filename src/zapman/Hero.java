@@ -17,18 +17,10 @@ class Hero {
 	private void moveTo(Square nextSquare) {
 		if (isDead) return;
 		if (nextSquare == null) return;
-		if (nextSquare.guest instanceof Ghost) {
-			Ghost pentelho = (Ghost)nextSquare.guest;
-			if (isSuper)
-				pentelho.die();
-			else {
-				die();
-				return;
-			}
-		}
-		if (square != null) square.guest = null;
+		if (!nextSquare.accept(this)) return;
+		
+		if (square != null)	square.vacate();
 		square = nextSquare;
-		square.guest = this;
 		square.hasFood = false;
 		if (square.hasSuperMentos) isSuper = true;
 		square.hasSuperMentos = false;
@@ -36,12 +28,22 @@ class Hero {
 
 	@Override
 	public String toString() {
+		if (isDead) return "T";
 		if (isSuper) return "S";
 		return "<";
 	}
 	void die() {
+		System.out.println("Hero morreu");
 		isDead = true;
-		square.guest = null;
 	}
 	
 }
+//if (nextSquare.guest instanceof Ghost) {
+//Ghost pentelho = (Ghost)nextSquare.guest;
+//if (isSuper)
+//	pentelho.die();
+//else {
+//	System.out.println("Hero vai se matar...");
+//	die();
+//}
+//}

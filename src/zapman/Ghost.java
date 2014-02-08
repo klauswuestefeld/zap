@@ -6,26 +6,20 @@ public class Ghost {
 	boolean isDead = false;
 
 	public Ghost(Square square) {
-		this.square = square;
-		square.guest = this;
+		if (square.accept(this))
+			this.square = square;
 	}
 
 	public void move() {
 		if (isDead) return;
-		square.guest = null;
 
-		if (square.right != null)
-			square = square.right;
+		Square nextSquare = square.right;
+		if (nextSquare == null) return;
 		
-		
-		if (square.guest instanceof Hero) {
-			Hero maldito = (Hero)square.guest;
-			if (maldito.isSuper)
-				die();
-			else 
-				maldito.die();
+		if (nextSquare.accept(this)) {
+			square.vacate();
+			square = nextSquare;
 		}
-		square.guest = this;
 	}
 
 	@Override
@@ -35,7 +29,7 @@ public class Ghost {
 
 	void die() {
 		isDead = true;
-		square.guest = null;
+		System.out.println("Ghost morreu");
 	}
 	
 }

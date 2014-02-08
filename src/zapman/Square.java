@@ -2,7 +2,7 @@ package zapman;
 
 class Square {
 
-	Object guest;
+	private Object guest;
 
 	Square up;
 	Square down;
@@ -26,6 +26,21 @@ class Square {
 		if (down  != null) down.up = null;
 		if (left  != null) left.right = null;
 		if (right != null) right.left = null;
+	}
+
+
+	boolean accept(Object newGuest) {
+		if (guest == null) {
+			guest = newGuest;
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
+	void vacate() {
+		guest = null;
 	}
 	
 }
