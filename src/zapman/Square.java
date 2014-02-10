@@ -2,21 +2,23 @@ package zapman;
 
 class Square {
 
-	private Object guest;
+	private Being guest;
 
 	Square up;
 	Square down;
 	Square left;
 	Square right;
 	
-	boolean hasFood = true;
+	boolean hasFood = false;
 	boolean hasSuperMentos = false;
+	boolean isWall = false;
 	
 
 	public String toString() {
 		if (guest != null) return guest.toString();
 		if (hasSuperMentos) return "o";
 		if (hasFood) return ".";
+		if (isWall) return "H";
 		return " ";
 	}
 
@@ -29,18 +31,13 @@ class Square {
 	}
 
 
-	boolean accept(Object newGuest) {
+	boolean accept(Being newGuest) {
 		if (guest == null) {
 			guest = newGuest;
 			return true;
 		} else {
-			Hero hero = null;
-			if (newGuest instanceof Hero) hero = (Hero)newGuest;
-			if (guest instanceof Hero) hero = (Hero)guest;
-			Ghost ghost = null;
-			if (newGuest instanceof Ghost) ghost = (Ghost)newGuest;
-			if (guest instanceof Ghost) ghost = (Ghost)guest;
-			ghost.hit(hero);
+			newGuest.hit(guest);
+			guest.hit(newGuest);
 			return false;
 		}
 	}

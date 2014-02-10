@@ -1,8 +1,8 @@
 package zapman;
 
-class Hero {
+class Hero extends Being {
+	
 	boolean isSuper = false;
-	boolean isDead = false;
 	Square square;
 
 	Hero(Square square) {
@@ -32,9 +32,11 @@ class Hero {
 		if (isSuper) return "S";
 		return "<";
 	}
-	void die() {
-		System.out.println("Hero morreu");
-		isDead = true;
-	}
 	
+	
+	@Override
+	void hit(Being ghost) {
+		if (isSuper) ghost.die();
+		else die();
+	}
 }

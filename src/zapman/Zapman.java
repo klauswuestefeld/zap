@@ -4,6 +4,9 @@
 
 package zapman;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import textgame.TextGame;
 
 public class Zapman implements TextGame {
@@ -13,16 +16,20 @@ public class Zapman implements TextGame {
 	private static final int COLUMNS = mentos[0].length;
 	private static Square[][] maze;
 	
-	static Ghost ghost;
+	static List<Ghost> ghosts = new ArrayList<Ghost>();
 	static Hero hero;
 
 	private static String[][] criarMentos() {
-		String[][] mentos = new String[5][];
-		mentos[0] = new String[]{".",".",".",".",".","o","."};
-		mentos[1] = new String[]{"!",".",".",".",".",".","."};
-		mentos[2] = new String[]{".",".",".","<",".",".","."};
-		mentos[3] = new String[]{".","H","H","H",".",".","."};
-		mentos[4] = new String[]{".",".",".",".",".","o","."};
+		String[][] mentos = new String[9][];
+		mentos[0] = new String[]{".","H","H","H","H","H","H","H","o"};
+		mentos[1] = new String[]{".","H",".",".",".",".",".","H","."};
+		mentos[2] = new String[]{".",".",".","H",".","H",".",".","."};
+		mentos[3] = new String[]{".","H","H","H",".","H","H","H","."};
+		mentos[4] = new String[]{".","H",".",".","<",".",".","H","."};
+		mentos[5] = new String[]{".","H",".","H","H","H",".","H","."};
+		mentos[6] = new String[]{"o",".",".",".",".",".",".",".","."};
+		mentos[7] = new String[]{"H","H","H","H",".","H","H","H","H"};
+		mentos[8] = new String[]{".",".",".",".","!",".",".",".","!"};
 		return mentos;
 	}
 	
@@ -62,10 +69,11 @@ public class Zapman implements TextGame {
 				String thing = mentos[line][column];
 				Square square = maze[line][column];
 				if (thing.equals("<")) hero = new Hero(square);
-				if (thing.equals("!")) ghost = new Ghost(square);
+				if (thing.equals("!")) ghosts.add(new Ghost(square));
 				if (thing.equals("o")) square.hasSuperMentos = true;
+				if (thing.equals(".")) square.hasFood = true;
 				if (thing.equals("H")) {
-					square.accept("H");
+					square.isWall = true;
 					square.detachFromNeighbors();
 				}
 			}
@@ -128,7 +136,9 @@ public class Zapman implements TextGame {
 	
 	@Override
 	public void pass() {
-		ghost.move();
+		for (Ghost ghost : ghosts) {
+			ghost.move();
+		}
 	}
 
 

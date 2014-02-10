@@ -1,9 +1,8 @@
 package zapman;
 
-public class Ghost {
+public class Ghost extends Being {
 
 	Square square;
-	boolean isDead = false;
 
 	public Ghost(Square square) {
 		if (square.accept(this))
@@ -27,10 +26,6 @@ public class Ghost {
 		return "!";
 	}
 
-	void die() {
-		isDead = true;
-		System.out.println("Ghost morreu");
-	}
 
 	void hit(Hero maldito) {
 		if (maldito.isSuper)
