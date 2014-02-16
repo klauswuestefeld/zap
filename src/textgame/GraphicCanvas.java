@@ -21,7 +21,7 @@ public class GraphicCanvas extends JPanel {
 	
 	public GraphicCanvas(Map<Character, BufferedImage> sprites) {
 		this.sprites = sprites;
-		setSize(new Dimension(448, 448));
+		setSize(new Dimension(2000, 2000));
 		setBackground(Color.BLACK);
 	}
 
@@ -46,7 +46,7 @@ public class GraphicCanvas extends JPanel {
 
 
 	private AffineTransform position(int line, int column) {
-		return AffineTransform.getTranslateInstance(column*64, line*64);
+		return AffineTransform.getTranslateInstance(column*40, line*40);
 	}
 
 	
