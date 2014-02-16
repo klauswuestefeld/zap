@@ -18,11 +18,14 @@ public class ZapmanMain {
 
 	private static Map<Character, BufferedImage> bitmaps() throws IOException {
 		Map<Character, BufferedImage> cacheBitmaps = new HashMap<Character, BufferedImage>();
-		cacheBitmaps.put('<', image("1.jpg"));
-		cacheBitmaps.put(' ', image("2.jpg"));
-		cacheBitmaps.put('H', image("3.jpg"));
-		cacheBitmaps.put('.', image("3.jpg"));
-		cacheBitmaps.put('!', image("3.jpg"));
+		cacheBitmaps.put('<', image("packman.png"));
+		cacheBitmaps.put(' ', image("nada.png"));
+		cacheBitmaps.put('H', image("parede.png"));
+		cacheBitmaps.put('.', image("pastilha.png"));
+		cacheBitmaps.put('!', image("ghost.png"));
+		cacheBitmaps.put('o', image("supermentos.png"));
+		cacheBitmaps.put('S', image("superpack.png"));
+		cacheBitmaps.put('T', image("morto.png"));
 		return cacheBitmaps;
 	}
 
