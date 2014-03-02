@@ -35,11 +35,16 @@ class Square {
 		if (guest == null) {
 			guest = newGuest;
 			return true;
-		} else {
-			newGuest.hit(guest);
-			guest.hit(newGuest);
-			return false;
 		}
+
+		if (newGuest == null) {
+			guest = newGuest;
+			return true;
+		}
+		
+		newGuest.hit(guest);
+		guest.hit(newGuest);
+		return false;
 	}
 
 

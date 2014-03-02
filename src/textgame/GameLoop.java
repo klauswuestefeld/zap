@@ -80,7 +80,7 @@ public class GameLoop {
 	
 	private void waitALittle() {
 		try {
-			Thread.sleep(800);
+			Thread.sleep(300);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

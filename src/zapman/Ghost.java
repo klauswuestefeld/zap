@@ -3,6 +3,7 @@ package zapman;
 public class Ghost extends Being {
 
 	Square square;
+	
 
 	public Ghost(Square square) {
 		if (square.accept(this))
@@ -10,7 +11,12 @@ public class Ghost extends Being {
 	}
 
 	public void move() {
-		if (isDead) return;
+		if (isDead) {
+			if (square == null) return;
+			square.accept(null);
+			square = null;
+			return;
+		}
 
 		Square nextSquare = square.right;
 		if (nextSquare == null) return;
