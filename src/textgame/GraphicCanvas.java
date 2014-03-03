@@ -58,7 +58,7 @@ public class GraphicCanvas extends JPanel {
 	private RenderedImage sprite(char character) {
 		if (sprites == null) return null;
 		RenderedImage bufferedImage = sprites.get(character);
-		if (bufferedImage == null) System.out.println("Sprite nao registrada para caracter: '" + character +"'");
+//		if (bufferedImage == null) System.out.println("Sprite nao registrada para caracter: '" + character +"'");
 		return bufferedImage;
 	}
 

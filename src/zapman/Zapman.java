@@ -22,14 +22,14 @@ public class Zapman implements TextGame {
 	private static String[][] criarMentos() {
 		String[][] mentos = new String[9][];
 		mentos[0] = new String[]{".","H","H","H","H","H","H","H","."};
-		mentos[1] = new String[]{".","H",".",".",".",".",".","H","."};
+		mentos[1] = new String[]{"o","H",".",".",".",".",".","H","o"};
 		mentos[2] = new String[]{".",".",".","H",".","H",".",".","."};
 		mentos[3] = new String[]{".","H","H","H",".","H","H","H","."};
 		mentos[4] = new String[]{".","H",".",".","<",".",".","H","."};
 		mentos[5] = new String[]{".","H",".","H","H","H",".","H","."};
 		mentos[6] = new String[]{".",".",".",".",".",".",".",".","."};
 		mentos[7] = new String[]{"H","H","H","H",".","H","H","H","H"};
-		mentos[8] = new String[]{".",".",".",".",".","!",".",".","."};
+		mentos[8] = new String[]{".",".",".","!",".","!",".",".","."};
 		return mentos;
 	}
 	
@@ -137,6 +137,7 @@ public class Zapman implements TextGame {
 	
 	@Override
 	public void pass() {
+		hero.spreadSmell();
 		for (Ghost ghost : ghosts) {
 			ghost.move();
 		}
