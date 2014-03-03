@@ -12,6 +12,8 @@ class Square {
 	boolean hasFood = false;
 	boolean hasSuperMentos = false;
 	boolean isWall = false;
+
+	int smell;
 	
 
 	public String toString() {
@@ -50,6 +52,35 @@ class Square {
 
 	void vacate() {
 		guest = null;
+	}
+
+
+	void spreadSmell() {
+		clearSmell();
+		spreadNewSmell(1000);
+	}
+
+
+	private void spreadNewSmell(int strength) {
+		if (smell >= strength) return;
+		smell = strength;
+		strength = strength - 1;
+		if (right != null) right.spreadNewSmell(strength);
+		if (up    != null) up.spreadNewSmell(strength);
+		if (left  != null) left.spreadNewSmell(strength);
+		if (down  != null) down.spreadNewSmell(strength);
+
+		
+	}
+
+
+	void clearSmell() {
+		if (smell == 0) return;
+		smell = 0;
+		if (right != null) right.clearSmell();
+		if (up    != null) up.clearSmell();
+		if (left  != null) left.clearSmell();
+		if (down  != null) down.clearSmell();
 	}
 	
 }

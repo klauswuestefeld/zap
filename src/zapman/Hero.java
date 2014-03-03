@@ -21,10 +21,14 @@ class Hero extends Being {
 		
 		if (square != null)	square.vacate();
 		square = nextSquare;
+		
+		if (square.hasFood)	Sound.play("nham");
 		square.hasFood = false;
-		Sound.play("tiro");
+	
 		if (square.hasSuperMentos) isSuper = true;
 		square.hasSuperMentos = false;
+		
+		square.spreadSmell();
 	}
 
 	@Override

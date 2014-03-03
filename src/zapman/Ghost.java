@@ -17,14 +17,27 @@ public class Ghost extends Being {
 			square = null;
 			return;
 		}
+		
+		Square nextSquare;
+		nextSquare = strongestSmell(square.right,square.left);
+		nextSquare = strongestSmell(nextSquare,square.down);
+		nextSquare = strongestSmell(nextSquare,square.up);
 
-		Square nextSquare = square.right;
+		
 		if (nextSquare == null) return;
+		System.out.println(nextSquare.smell);
 		
 		if (nextSquare.accept(this)) {
 			square.vacate();
 			square = nextSquare;
 		}
+	}
+
+	private Square strongestSmell(Square s1, Square s2) {
+		if (s1 == null) return s2;
+		if (s2 == null) return s1;
+		if (s2.smell > s1.smell) return s2;
+		return s1;
 	}
 
 	@Override
