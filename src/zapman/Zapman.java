@@ -35,7 +35,7 @@ public class Zapman implements TextGame {
 	
 
 	static {
-		Sound.play("som-teste");
+		Sound.play("plup2");
 		maze = new Square[LINES][];
 		
 		for (int line = 0; line < LINES; line++) {

@@ -10,6 +10,7 @@ class Being {
 
 	void die() {
 		isDead = true;
+		Sound.play("fantasma morte c");
 	}
 
 }

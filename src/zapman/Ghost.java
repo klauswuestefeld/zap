@@ -32,7 +32,6 @@ public class Ghost extends Being {
 		return "!";
 	}
 
-
 	void hit(Hero maldito) {
 		if (maldito.isSuper)
 			die();
