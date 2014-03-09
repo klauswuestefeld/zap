@@ -1,5 +1,6 @@
 package zapman;
 
+
 class Square {
 
 	private Being guest;
@@ -17,10 +18,11 @@ class Square {
 	
 
 	public String toString() {
+//		if (smell != 0) return "" + smell;
+		if (isWall) return "H";
 		if (guest != null) return guest.toString();
 		if (hasSuperMentos) return "o";
 		if (hasFood) return ".";
-		if (isWall) return "H";
 		return " ";
 	}
 

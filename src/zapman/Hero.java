@@ -6,7 +6,8 @@ class Hero extends Being {
 	Square square;
 
 	Hero(Square square) {
-		moveTo(square);
+		square.accept(this);
+		this.square = square;
 	}
 
 	void right() { moveTo(square.right); }
@@ -27,8 +28,6 @@ class Hero extends Being {
 	
 		if (square.hasSuperMentos) isSuper = true;
 		square.hasSuperMentos = false;
-		
-		square.spreadSmell();
 	}
 
 	@Override
@@ -43,5 +42,9 @@ class Hero extends Being {
 	void hit(Being ghost) {
 		if (isSuper) ghost.die();
 		else die();
+	}
+
+	void spreadSmell() {
+		square.spreadSmell();
 	}
 }
