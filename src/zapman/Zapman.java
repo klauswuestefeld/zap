@@ -21,15 +21,15 @@ public class Zapman implements TextGame {
 
 	private static String[][] criarMentos() {
 		String[][] mentos = new String[9][];
-		mentos[0] = new String[]{".","H","H","H","H","H","H","H","."};
-		mentos[1] = new String[]{".","H",".",".",".",".",".","H","."};
-		mentos[2] = new String[]{".",".",".","H",".","H",".",".","."};
-		mentos[3] = new String[]{".","H","H","H",".","H","H","H","."};
-		mentos[4] = new String[]{".","H",".",".","<",".",".","H","."};
-		mentos[5] = new String[]{".","H",".","H","H","H",".","H","."};
-		mentos[6] = new String[]{".",".",".",".",".",".",".",".","."};
-		mentos[7] = new String[]{"H","H","H","H",".","H","H","H","H"};
-		mentos[8] = new String[]{".",".",".",".",".","!",".",".","."};
+		mentos[0] = new String[]{".","H","H","H","H","H","H","H",".","H","H","H","."};
+		mentos[1] = new String[]{".","H",".",".",".",".",".","H",".",".",".","H","."};
+		mentos[2] = new String[]{".",".",".","H",".","H",".",".",".","H",".","H","H"};
+		mentos[3] = new String[]{".","H","H","H",".","H","H","H",".","H",".",".","."};
+		mentos[4] = new String[]{".","H",".",".","<",".",".","H",".","H","H","H","."};
+		mentos[5] = new String[]{".","H",".","H","H","H",".","H",".",".",".","H","."};
+		mentos[6] = new String[]{".",".",".",".",".",".",".",".",".","H",".","H","."};
+		mentos[7] = new String[]{"H","H","H","H",".","H","H","H","H","H",".","H","."};
+		mentos[8] = new String[]{".",".",".",".",".","!",".",".",".","H",".","H","H"};
 		return mentos;
 	}
 	
