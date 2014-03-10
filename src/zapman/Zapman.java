@@ -11,29 +11,50 @@ import textgame.TextGame;
 
 public class Zapman implements TextGame {
 
-	private static String[][] mentos = criarMentos();
+	private static String[] mentos = mazeLines();
 	private static final int LINES = mentos.length;
-	private static final int COLUMNS = mentos[0].length;
+	private static final int COLUMNS = mentos[0].length();
 	private static Square[][] maze;
 	
 	static List<Ghost> ghosts = new ArrayList<Ghost>();
 	static Hero hero;
 
-	private static String[][] criarMentos() {
-		String[][] mentos = new String[12][];
-		mentos[0]  = new String[]{".","H","H","H","H","H","H","H",".","H","H","H","."};
-		mentos[1]  = new String[]{".","H",".",".",".",".",".","H",".",".",".","H","."};
-		mentos[2]  = new String[]{".",".",".","H",".","H",".",".",".","H",".","H","H"};
-		mentos[3]  = new String[]{".","H","H","H",".","H","H","H",".","H",".",".","."};
-		mentos[4]  = new String[]{".","H",".",".","<",".",".","H",".","H","H","H","o"};
-		mentos[5]  = new String[]{".","H",".","H","H","H",".","H",".",".",".","H","."};
-		mentos[6]  = new String[]{".",".",".",".",".",".",".",".",".","H",".","H","."};
-		mentos[7]  = new String[]{"H","H","H","H",".","H","H","H","H","H",".","H","."};
-		mentos[8]  = new String[]{"H","H","H","H",".","H",".",".",".","H",".",".","."};
-		mentos[9]  = new String[]{"H","H","H","H",".",".",".","H",".",".",".","H","H"};
-		mentos[10] = new String[]{".",".","o",".",".","H",".","H","!","H","H","H","H"};
-		mentos[11] = new String[]{".","H","H","H","H","H",".",".",".","H",".",".","."};
-		return mentos;
+	private static String[] mazeLines() {
+		
+		return new String[] {
+
+				
+//				" HHHHHHH HHH ",
+//				" H     H   H ",
+//				"   H H   H HH",
+//				" HHH HHH H   ",
+//				" H  <  H HHHo",
+//				" H HHH H   H ",
+//				"         H H ",
+//				"HHHH HHHHH H ",
+//				"HHHH H   H   ",
+//				"HHHH   H   HH",
+//				"  o  H H!HHHH",
+//				" HHHHH!  H   "
+
+				
+				" HHHHHHH HHH ",
+				" H     H   H ",
+				"   H H   H HH",
+				" HHH HHH H   ",
+				" H  <  H HHHo",
+				" H HHH H   H ",
+				"         H H ",
+				"HHHH HHHHH H ",
+				"HHHH H   H   ",
+				"HHHH   H   HH",
+				"  o  H H!HHHH",
+				" HHHHH!  H   "
+
+				
+		
+		};
+
 	}
 	
 
@@ -70,12 +91,12 @@ public class Zapman implements TextGame {
 	static void putThingsInMaze() {
 		for (int line = 0; line < LINES; line++) {
 			for (int column = 0; column < COLUMNS; column++) {
-				String thing = mentos[line][column];
+				String thing = mentos[line].substring(column, column + 1);
 				Square square = maze[line][column];
 				if (thing.equals("<")) hero = new Hero(square);
 				if (thing.equals("!")) ghosts.add(new Ghost(square));
 				if (thing.equals("o")) square.hasSuperMentos = true;
-				if (thing.equals(".")) square.hasFood = true;
+				if (thing.equals(" ")) square.hasFood = true;
 				if (thing.equals("H")) {
 					square.isWall = true;
 					square.detachFromNeighbors();
@@ -125,7 +146,7 @@ public class Zapman implements TextGame {
 	private String drawLine(int line) {
 		String lineString = "";
 		int column = 0;
-		while (column < mentos[line].length) {
+		while (column < mentos[line].length()) {
 			lineString = lineString + drawThing(line, column);
 			column = column + 1;
 		}
@@ -140,6 +161,7 @@ public class Zapman implements TextGame {
 	
 	@Override
 	public void pass() {
+		hero.spreadSmell();
 		for (Ghost ghost : ghosts) {
 			ghost.move();
 		}
