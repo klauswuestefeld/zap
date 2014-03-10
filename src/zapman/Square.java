@@ -18,10 +18,10 @@ class Square {
 	
 
 	public String toString() {
-//		if (smell != 0) return "" + smell;
 		if (isWall) return "H";
 		if (guest != null) return guest.toString();
 		if (hasSuperMentos) return "o";
+//		return "" + (smell % 10);
 		if (hasFood) return ".";
 		return " ";
 	}
