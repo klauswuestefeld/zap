@@ -13,7 +13,8 @@ class Square {
 	boolean hasFood = false;
 	boolean hasSuperMentos = false;
 	boolean isWall = false;
-
+	boolean hasLaser = false;
+	
 	int smell;
 	
 
@@ -22,6 +23,7 @@ class Square {
 		if (guest != null) return guest.toString();
 		if (hasSuperMentos) return "o";
 //		return "" + (smell % 10);
+		if (hasLaser) return "Z";
 		if (hasFood) return ".";
 		return " ";
 	}
@@ -83,6 +85,46 @@ class Square {
 		if (up    != null) up.clearSmell();
 		if (left  != null) left.clearSmell();
 		if (down  != null) down.clearSmell();
+	}
+
+
+	void spreadLaser() {
+		spreadLaserUp();
+		spreadLaserDown();
+		spreadLaserLeft();
+		spreadLaserRight();
+	}
+
+
+	private void spreadLaserRight() {
+		if (right != null) {
+			right.hasLaser = true;
+			right.spreadLaserRight();
+		}
+	}
+
+
+	private void spreadLaserLeft() {
+		if (left != null) {
+			left.hasLaser = true;
+			left.spreadLaserLeft();
+		}
+	}
+
+
+	private void spreadLaserDown() {
+		if (down != null) {
+			down.hasLaser = true;
+			down.spreadLaserDown();
+		}
+	}
+
+
+	private void spreadLaserUp() {
+		if (up != null) {
+			up.hasLaser = true;
+			up.spreadLaserUp();
+		}
 	}
 	
 }

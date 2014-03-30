@@ -172,9 +172,7 @@ public class Zapman implements TextGame {
 	public void left()  { hero.left(); }
 	public void up()    { hero.up(); } 
 	public void down()  { hero.down(); }
-	@Override
-	public void space() {
-	}
+	public void space() { hero.shoot(); }
 
 	
 

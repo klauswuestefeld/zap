@@ -47,4 +47,8 @@ class Hero extends Being {
 	void spreadSmell() {
 		square.spreadSmell();
 	}
+
+	void shoot() {
+		square.spreadLaser();
+	}
 }
