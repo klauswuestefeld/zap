@@ -1,3 +1,17 @@
+// Classes (Grey)    - Define how objects behave.
+//   Fields (magenta)    - How the object IS (state of the object). What it remembers.
+//   Methods (black underlined)  - The things objects DO. Constructor - A special method with the same name as the class
+//                   It runs when the object is created.
+//     Arguments (blue) - Received by the methods to use.
+//     Statements - Each command.
+//     Variables (green) - like a temporary field inside the method.
+
+
+
+
+
+
+
 package zapman;
 
 import java.awt.image.BufferedImage;
@@ -24,6 +38,7 @@ public class ZapmanMain {
 		cacheBitmaps.put('.', image("pastilha.png"));
 		cacheBitmaps.put('!', image("ghost.png"));
 		cacheBitmaps.put('o', image("supermentos.png"));
+		cacheBitmaps.put('Z', image("laser.png"));
 		cacheBitmaps.put('S', image("superpack.png"));
 		cacheBitmaps.put('T', image("morto.png"));
 		return cacheBitmaps;

@@ -52,7 +52,7 @@ public class GameLoop {
 	
 	private void initFrame(Map<Character, BufferedImage> sprites) {
 		JFrame frame = new JFrame();
-		frame.setSize(448, 478);
+		frame.setSize(600, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		canvas = new GraphicCanvas(sprites);
 		canvas.setFocusable(true);
