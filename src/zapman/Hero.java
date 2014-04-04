@@ -1,19 +1,21 @@
 package zapman;
 
+
 class Hero extends Being {
 	
 	boolean isSuper = false;
 	Square square;
+	String direction;
 
 	Hero(Square square) {
 		square.accept(this);
 		this.square = square;
 	}
 
-	void right() { moveTo(square.right); }
-	void left()  { moveTo(square.left); }
-	void up()    { moveTo(square.up); }
-	void down()  { moveTo(square.down); }
+	void right() { direction = "right"; }
+	void left()  { direction = "left"; }
+	void up()    { direction = "up"; }
+	void down()  { direction = "down"; }
 
 	private void moveTo(Square nextSquare) {
 		if (isDead) return;
@@ -37,7 +39,6 @@ class Hero extends Being {
 		return "<";
 	}
 	
-	
 	@Override
 	void hit(Being ghost) {
 		if (isSuper) ghost.die();
@@ -50,5 +51,14 @@ class Hero extends Being {
 
 	void shoot() {
 		square.spreadLaser();
+	}
+
+	void move() {
+		if (direction == null) return;
+		if (direction.equals("right")) moveTo(square.right);
+		if (direction.equals("left"))  moveTo(square.left);
+		if (direction.equals("down"))  moveTo(square.down);
+		if (direction.equals("up"))    moveTo(square.up);
+	
 	}
 }

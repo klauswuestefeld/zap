@@ -42,6 +42,7 @@ public class GameLoop {
 		if (lastKey == KeyEvent.VK_DOWN) game.down();
 		if (lastKey == KeyEvent.VK_LEFT) game.left();
 		if (lastKey == KeyEvent.VK_RIGHT) game.right();
+		lastKey = 0;
 	}
 
 

@@ -139,6 +139,7 @@ public class Zapman implements TextGame {
 			lines[line] = drawLine(line);
 			line = line + 1;
 		}
+		clearLasers();
 		return lines;
 	}
 	
@@ -161,9 +162,20 @@ public class Zapman implements TextGame {
 	
 	@Override
 	public void pass() {
+		hero.move();
 		hero.spreadSmell();
-		for (Ghost ghost : ghosts) {
+		for (Ghost ghost : ghosts)
 			ghost.move();
+		
+	}
+
+
+	private void clearLasers() {
+		for (int line = 0; line < LINES; line++) {
+			for (int column = 0; column < COLUMNS; column++) {
+				Square square = maze[line][column];
+				square.hasLaser = false;
+			}
 		}
 	}
 
