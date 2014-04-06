@@ -11,8 +11,11 @@ public class Ghost extends Being {
 	}
 
 	public void move() {
+		if (square == null) return;
+		
+		if (square.hasLaser) die();
+		
 		if (isDead) {
-			if (square == null) return;
 			square.accept(null);
 			square = null;
 			return;
@@ -24,8 +27,9 @@ public class Ghost extends Being {
 		nextSquare = strongestSmell(nextSquare,square.up);
 
 		
-		if (nextSquare == null) return;
-		System.out.println(nextSquare.smell);
+//		if (nextSquare == null) return;
+		
+		if (nextSquare.hasLaser) return;
 		
 		if (nextSquare.accept(this)) {
 			square.vacate();
