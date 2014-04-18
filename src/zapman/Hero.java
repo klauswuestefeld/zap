@@ -6,31 +6,19 @@ class Hero extends Being {
 	boolean isSuper = false;
 	Square square;
 	String direction;
+	String nextDirection = "none";
 
 	Hero(Square square) {
 		square.accept(this);
 		this.square = square;
 	}
 
-	void right() { direction = "right"; }
-	void left()  { direction = "left"; }
-	void up()    { direction = "up"; }
-	void down()  { direction = "down"; }
+	void right() { nextDirection = "right"; }
+	void left()  { nextDirection = "left"; }
+	void up()    { nextDirection = "up"; }
+	void down()  { nextDirection = "down"; }
 
-	private void moveTo(Square nextSquare) {
-		if (isDead) return;
-		if (nextSquare == null) return;
-		if (!nextSquare.accept(this)) return;
-		
-		if (square != null)	square.vacate();
-		square = nextSquare;
-		
-		if (square.hasFood)	Sound.play("nham");
-		square.hasFood = false;
 	
-		if (square.hasSuperMentos) isSuper = true;
-		square.hasSuperMentos = false;
-	}
 
 	@Override
 	public String toString() {
@@ -54,11 +42,37 @@ class Hero extends Being {
 	}
 
 	void move() {
+		if (isDead) return;
+		
+		Square nextSquare = null;
+		if (nextDirection.equals("right")) nextSquare = square.right;
+		if (nextDirection.equals("left"))  nextSquare = square.left;
+		if (nextDirection.equals("up"))    nextSquare = square.up;
+		if (nextDirection.equals("down"))  nextSquare = square.down;
+
+		System.out.println(nextDirection + "-" + direction + "-" + nextSquare);
+		if (nextSquare != null) {
+			direction = nextDirection;
+		}
+
 		if (direction == null) return;
 		if (direction.equals("right")) moveTo(square.right);
 		if (direction.equals("left"))  moveTo(square.left);
 		if (direction.equals("down"))  moveTo(square.down);
 		if (direction.equals("up"))    moveTo(square.up);
+	}
 	
+	private void moveTo(Square nextSquare) {
+		if (nextSquare == null) return;
+		if (!nextSquare.accept(this)) return;
+		
+		if (square != null)	square.vacate();
+		square = nextSquare;
+		
+		if (square.hasFood)	Sound.play("nham");
+		square.hasFood = false;
+	
+		if (square.hasSuperMentos) isSuper = true;
+		square.hasSuperMentos = false;
 	}
 }

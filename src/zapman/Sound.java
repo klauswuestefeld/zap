@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class Sound {
 
-	private static Map<String, Deque<AudioClip>> clipPoolByName = new HashMap<>();
+	private static Map<String, Deque<AudioClip>> clipPoolByName = new HashMap<String, Deque<AudioClip>>();
 	
 	public static void play(final String fileName) {
 		new Thread() { @Override public void run() {
@@ -25,7 +25,7 @@ public class Sound {
 	private static AudioClip borrowClip(final String fileName) {
 		Deque<AudioClip> clipPool = clipPoolByName.get(fileName);
 		if (clipPool == null) {
-			clipPool = new ArrayDeque<>(); //Basically a stack
+			clipPool = new ArrayDeque<AudioClip>(); //Basically a stack
 			clipPoolByName.put(fileName, clipPool);
 		}
 		AudioClip clip = clipPool.pollFirst();
