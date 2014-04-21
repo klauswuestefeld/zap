@@ -164,9 +164,28 @@ public class Zapman implements TextGame {
 	public void pass() {
 		hero.move();
 		hero.spreadSmell();
-		for (Ghost ghost : ghosts)
+		Square faintest = faintestSmell();
+		for (Ghost ghost : ghosts){
+			if (ghost.isDead) ghost.reappear(faintest);
 			ghost.move();
+		}
 		
+	}
+
+
+	private Square faintestSmell() {
+		Square faintest = null;
+		int smell = Integer.MAX_VALUE;
+		for (int line = 0; line < LINES; line++) {
+			for (int column = 0; column < COLUMNS; column++) {
+				Square square = maze[line][column];
+				if (square.smell < smell){
+					smell = square.smell;
+					faintest = square;
+				}
+			}
+		}
+		return faintest;
 	}
 
 

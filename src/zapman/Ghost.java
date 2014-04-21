@@ -11,7 +11,8 @@ public class Ghost extends Being {
 	}
 
 	public void move() {
-		if (square == null) return;
+		if (square == null)
+			return;
 		
 		if (square.hasLaser) die();
 		
@@ -25,9 +26,6 @@ public class Ghost extends Being {
 		nextSquare = strongestSmell(square.right,square.left);
 		nextSquare = strongestSmell(nextSquare,square.down);
 		nextSquare = strongestSmell(nextSquare,square.up);
-
-		
-//		if (nextSquare == null) return;
 		
 		if (nextSquare.hasLaser) return;
 		
@@ -36,6 +34,7 @@ public class Ghost extends Being {
 			square = nextSquare;
 		}
 	}
+
 
 	private Square strongestSmell(Square s1, Square s2) {
 		if (s1 == null) return s2;
@@ -49,11 +48,12 @@ public class Ghost extends Being {
 		return "!";
 	}
 
-	void hit(Hero maldito) {
-		if (maldito.isSuper)
-			die();
-		else
-			maldito.die();
+	void reappear(Square faintest) {
+		if (faintest.accept(this)) {
+			square = faintest;
+			isDead = false;
+		}
 	}
+
 	
 }

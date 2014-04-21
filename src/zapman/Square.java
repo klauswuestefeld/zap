@@ -3,7 +3,7 @@ package zapman;
 
 class Square {
 
-	private Being guest;
+	Being guest;
 
 	Square up;
 	Square down;
@@ -74,8 +74,6 @@ class Square {
 		if (up    != null) up.spreadNewSmell(strength);
 		if (left  != null) left.spreadNewSmell(strength);
 		if (down  != null) down.spreadNewSmell(strength);
-
-		
 	}
 
 
