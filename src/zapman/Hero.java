@@ -50,10 +50,9 @@ class Hero extends Being {
 		if (nextDirection.equals("up"))    nextSquare = square.up;
 		if (nextDirection.equals("down"))  nextSquare = square.down;
 
-		System.out.println(nextDirection + "-" + direction + "-" + nextSquare);
-		if (nextSquare != null) {
+		if (nextSquare != null) 
 			direction = nextDirection;
-		}
+		
 
 		if (direction == null) return;
 		if (direction.equals("right")) moveTo(square.right);

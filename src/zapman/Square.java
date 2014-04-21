@@ -66,6 +66,7 @@ class Square {
 
 
 	private void spreadNewSmell(int strength) {
+		if (guest instanceof Ghost) return;
 		if (smell >= strength) return;
 		smell = strength;
 		strength = strength - 1;
