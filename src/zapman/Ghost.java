@@ -10,18 +10,21 @@ public class Ghost extends Being {
 			this.square = square;
 	}
 
+	@Override
+	void die() {
+		super.die();
+		if (square == null) return;
+		square.accept(null);
+		square = null;
+	}
+	
 	public void move() {
 		if (square == null)
 			return;
 		
 		if (square.hasLaser) die();
-		
-		if (isDead) {
-			square.accept(null);
-			square = null;
-			return;
-		}
-		
+		if (isDead) return;
+			
 		Square nextSquare;
 		nextSquare = strongestSmell(square.right,square.left);
 		nextSquare = strongestSmell(nextSquare,square.down);
@@ -48,9 +51,9 @@ public class Ghost extends Being {
 		return "!";
 	}
 
-	void reappear(Square faintest) {
-		if (faintest.accept(this)) {
-			square = faintest;
+	void reappear(Square square) {
+		if (square.accept(this)) {
+			this.square = square;
 			isDead = false;
 		}
 	}
