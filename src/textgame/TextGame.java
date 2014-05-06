@@ -10,6 +10,7 @@ public interface TextGame {
 	
 	void pass();
 	
+	String title();
 	String[] screen();
 
 }

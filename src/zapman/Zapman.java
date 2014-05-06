@@ -188,9 +188,10 @@ public class Zapman implements TextGame {
 	public void down()  { hero.down(); }
 	public void space() { hero.shoot(); }
 
-	
 
-
-
+	@Override
+	public String title() {
+		return "Zapmain | Points: " + hero.points;
+	}
 
 }

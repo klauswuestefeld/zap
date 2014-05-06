@@ -1,3 +1,4 @@
+package colorcube;
 import static java.awt.Color.BLACK;
 import static java.awt.event.KeyEvent.VK_DOWN;
 import static java.awt.event.KeyEvent.VK_UP;

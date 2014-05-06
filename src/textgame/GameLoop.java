@@ -13,6 +13,8 @@ public class GameLoop {
 	private GraphicCanvas canvas;
 	private int lastKey;
 	
+	private JFrame frame;
+	
 	
 	public GameLoop(TextGame game) {
 		this(game, null);
@@ -31,11 +33,17 @@ public class GameLoop {
 			game.pass();
 			refreshGraphics();
 			printToConsole();
+			refreshTitle();
 			waitALittle();
 		}
 	}
 	
 	
+	private void refreshTitle() {
+		frame.setTitle(game.title());
+	}
+
+
 	private void handleLastKey() {
 		if (lastKey == KeyEvent.VK_SPACE) game.space();
 		if (lastKey == KeyEvent.VK_UP) game.up();
@@ -52,7 +60,7 @@ public class GameLoop {
 
 	
 	private void initFrame(Map<Character, BufferedImage> sprites) {
-		JFrame frame = new JFrame();
+		frame = new JFrame();
 		frame.setSize(600, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		canvas = new GraphicCanvas(sprites);

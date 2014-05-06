@@ -7,6 +7,7 @@ class Hero extends Being {
 	Square square;
 	String direction;
 	String nextDirection = "none";
+	int points;
 
 	Hero(Square square) {
 		square.accept(this);
@@ -68,8 +69,11 @@ class Hero extends Being {
 		if (square != null)	square.vacate();
 		square = nextSquare;
 		
-		if (square.hasFood)	Sound.play("nham");
-		square.hasFood = false;
+		if (square.hasFood){
+			Sound.play("nham");
+			points = points + 1;
+			square.hasFood = false;	
+		}
 	
 		if (square.hasSuperMentos) isSuper = true;
 		square.hasSuperMentos = false;
