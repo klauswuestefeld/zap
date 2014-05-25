@@ -22,6 +22,55 @@ public class Zapman implements TextGame {
 	private static String[] mazeLines() {
 		
 		return new String[] {
+				
+				"HHHHHHHHH HHHHHHHHHH",
+				"    H   H H   H     ",
+				"HHH   H     H    HHH",
+				"HHHH HHHHHHHHHH HHHH",
+				"H                  H",
+				"H HHHHHHH HHHHHHHH H",
+				"H       H H        H",
+				"HHHH H HH HH HH HHHH",
+				"HH     HH HH    HHHH",
+				"H  HH HHH     H    H",
+				"H HHH HHHHHHH HHHH H",
+				"H     H     H      H",
+				"HHHHHHH HHH HHHHHHHH",
+				"H        <         H",
+				"HH H HHHHHHHHHH H HH",
+				"   H            H   ",
+				"HHHHHHHHH HHHHHHHHHH",
+				
+//				"HHHHH HHHHHHHH HHHHH",
+//				"    H          H    ",
+//				"HHH H HHHHHHHH H HHH",
+//				"    H          H    ",
+//				"HHH   HHHHHHHH   HHH",
+//				"HHH              HHH",
+//				"HHHHHH HHHHHH HHHHHH",
+//				"H    H H    H H    H",
+//				"  HH     HH     HH  ",
+//				"H    H H    H H    H",
+//				"HHHHHH HHHHHH HHHHHH",
+//				"HHH              HHH",
+//				"HHH   HHHHHHHH   HHH",
+//				"    H          H    ",
+//				"HHH H HHHHHHHH HHHHH",
+//				"    H          H    ",
+//				"HHHHH HHHHHHHH HHHHH",
+				
+//				"H HHH H HHHHH",
+//				"H H   H   H H",
+//				"H H HHHHH H H",
+//				"             ",
+//				"HHHH HHHHHH H",
+//				"HHHH HHHHHH H",
+//				"H           H",
+//				"  HHHHHHHHH  ",
+//				"H           H",
+//				"HHHHHH HHHH H",
+//				"H           H",
+//				"H HHHHHHHHHHH"
 
 				
 //				" HHHHHHH HHH ",
@@ -36,20 +85,6 @@ public class Zapman implements TextGame {
 //				"HHHH   H   HH",
 //				"  o  H H!HHHH",
 //				" HHHHH!  H   "
-
-				
-				" HHHHHHH HHH ",
-				" H     H   H ",
-				"   H H   H HH",
-				" HHH HHH H   ",
-				" H  <  H HHHo",
-				" H HHH H   H ",
-				"         H H ",
-				"HHHH HHHHH H ",
-				"HHHH H   H   ",
-				"HHHH   H   HH",
-				"  o  H H!HHHH",
-				" HHHHH!  H   "
 
 				
 		
