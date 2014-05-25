@@ -1,5 +1,6 @@
 package textgame;
 
+import java.awt.Insets;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -55,13 +56,17 @@ public class GameLoop {
 
 
 	private void refreshGraphics() {
-		canvas.refresh(game.screen());
+		String[] screen = game.screen();
+		Insets insets = frame.getInsets();
+		int width = screen[0].length() * 40 + insets.left + insets.right;
+		int height = screen.length * 40 + insets.top + insets.bottom;
+		frame.setSize(width, height);
+		canvas.refresh(screen);
 	}
 
 	
 	private void initFrame(Map<Character, BufferedImage> sprites) {
 		frame = new JFrame();
-		frame.setSize(600, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		canvas = new GraphicCanvas(sprites);
 		canvas.setFocusable(true);
