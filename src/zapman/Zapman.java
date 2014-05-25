@@ -87,18 +87,18 @@ public class Zapman implements TextGame {
 //				" HHHHH!  H   "
 
 				
-				" HHHHHHH HHH ",
-				" H   < H   H ",
-				"   H H   H HH",
-				" HHH HHH H   ",
-				" H     H HHHo",
-				" H HHH H   H ",
-				"         H H ",
-				"HHHH HHHHH H ",
-				"HHHH H   H   ",
-				"HHHH   H   HH",
-				"  o  H!H HHHH",
-				" HHHHH!!!H   "
+//				" HHHHHHH HHH ",
+//				" H   < H   H ",
+//				"   H H   H HH",
+//				" HHH HHH H   ",
+//				" H     H HHHo",
+//				" H HHH H   H ",
+//				"         H H ",
+//				"HHHH HHHHH H ",
+//				"HHHH H   H   ",
+//				"HHHH   H   HH",
+//				"  o  H!H HHHH",
+//				" HHHHH!!!H   "
 		
 		};
 
