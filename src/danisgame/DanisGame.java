@@ -50,4 +50,10 @@ public class DanisGame implements TextGame {
 	public void space() {
 	}
 
+
+	@Override
+	public String title() {
+		return "Dani's Game";
+	}
+
 }

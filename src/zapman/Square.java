@@ -49,7 +49,7 @@ class Square {
 		}
 		
 		newGuest.hit(guest);
-		guest.hit(newGuest);
+		if (guest != null) guest.hit(newGuest);
 		return false;
 	}
 

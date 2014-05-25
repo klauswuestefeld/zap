@@ -34,5 +34,10 @@ public class DemoGame implements TextGame {
 	private long randomNumber() {
 		return ((System.nanoTime() % 3) + 1);
 	}
+	
+	@Override
+	public String title() {
+		return "Demo Game";
+	}
 
 }

@@ -87,6 +87,18 @@ public class Zapman implements TextGame {
 //				" HHHHH!  H   "
 
 				
+				" HHHHHHH HHH ",
+				" H   < H   H ",
+				"   H H   H HH",
+				" HHH HHH H   ",
+				" H     H HHHo",
+				" H HHH H   H ",
+				"         H H ",
+				"HHHH HHHHH H ",
+				"HHHH H   H   ",
+				"HHHH   H   HH",
+				"  o  H!H HHHH",
+				" HHHHH!!!H   "
 		
 		};
 
@@ -199,28 +211,11 @@ public class Zapman implements TextGame {
 	public void pass() {
 		hero.move();
 		hero.spreadSmell();
-		Square faintest = faintestSmell();
 		for (Ghost ghost : ghosts){
-			if (ghost.isDead) ghost.reappear(faintest);
+			if (ghost.isDead) ghost.reappear(maze[LINES/2][COLUMNS/2]);
 			ghost.move();
 		}
 		
-	}
-
-
-	private Square faintestSmell() {
-		Square faintest = null;
-		int smell = Integer.MAX_VALUE;
-		for (int line = 0; line < LINES; line++) {
-			for (int column = 0; column < COLUMNS; column++) {
-				Square square = maze[line][column];
-				if (square.smell < smell){
-					smell = square.smell;
-					faintest = square;
-				}
-			}
-		}
-		return faintest;
 	}
 
 
@@ -240,9 +235,10 @@ public class Zapman implements TextGame {
 	public void down()  { hero.down(); }
 	public void space() { hero.shoot(); }
 
-	
 
-
-
+	@Override
+	public String title() {
+		return "Zapmain | Points: " + hero.points;
+	}
 
 }
