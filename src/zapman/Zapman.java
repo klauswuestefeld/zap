@@ -11,101 +11,113 @@ import textgame.TextGame;
 
 public class Zapman implements TextGame {
 
-	private static String[] mentos = mazeLines();
-	private static final int LINES = mentos.length;
-	private static final int COLUMNS = mentos[0].length();
-	private static Square[][] maze;
+	private String[] maze0 = new String[] {
+		"HHHHHHHHH HHHHHHHHHH",
+		"    H   H H   H     ",
+		"HHH   H     H    HHH",
+		"HHHH HHHHHHHHHH HHHH",
+		"H                  H",
+		"H HHHHHHH HHHHHHHH H",
+		"H       H H        H",
+		"HHHH H HH HH HH HHHH",
+		"HH     HH HH    HHHH",
+		"H  HH HHH     H    H",
+		"H HHH HHHHHHH HHHH H",
+		"H     H     H      H",
+		"HHHHHHH HHH HHHHHHHH",
+		"H        <         H",
+		"HH H HHHHHHHHHH H HH",
+		"   H            H   ",
+		"HHHHHHHHH HHHHHHHHHH",
+	};
 	
-	static List<Ghost> ghosts = new ArrayList<Ghost>();
-	static Hero hero;
-
-	private static String[] mazeLines() {
+	private String[] maze1 = new String[]{
+		"HHHHH HHHHHHHH HHHHH",
+		"    H          H    ",
+		"HHH H HHHHHHHH H HHH",
+		"    H          H    ",
+		"HHH   HHHHHHHH   HHH",
+		"HHH              HHH",
+		"HHHHHH HHHHHH HHHHHH",
+		"H    H H    H H    H",
+		"  HH     HH     HH  ",
+		"H    H H    H H    H",
+		"HHHHHH HHHHHH HHHHHH",
+		"HHH              HHH",
+		"HHH   HHHHHHHH   HHH",
+		"    H     <    H    ",
+		"HHH H HHHHHHHH H HHH",
+		"    H          H    ",
+		"HHHHH HHHHHHHH HHHHH",
+	
+	};
+	
+	private String[] maze2 = new String[]{
 		
-		return new String[] {
-				
-//				"HHHHHHHHH HHHHHHHHHH",
-//				"    H   H H   H     ",
-//				"HHH   H     H    HHH",
-//				"HHHH HHHHHHHHHH HHHH",
-//				"H                  H",
-//				"H HHHHHHH HHHHHHHH H",
-//				"H       H H        H",
-//				"HHHH H HH HH HH HHHH",
-//				"HH     HH HH    HHHH",
-//				"H  HH HHH     H    H",
-//				"H HHH HHHHHHH HHHH H",
-//				"H     H     H      H",
-//				"HHHHHHH HHH HHHHHHHH",
-//				"H        <         H",
-//				"HH H HHHHHHHHHH H HH",
-//				"   H            H   ",
-//				"HHHHHHHHH HHHHHHHHHH",
-				
-//				"HHHHH HHHHHHHH HHHHH",
-//				"    H          H    ",
-//				"HHH H HHHHHHHH H HHH",
-//				"    H          H    ",
-//				"HHH   HHHHHHHH   HHH",
-//				"HHH              HHH",
-//				"HHHHHH HHHHHH HHHHHH",
-//				"H    H H    H H    H",
-//				"  HH     HH     HH  ",
-//				"H    H H    H H    H",
-//				"HHHHHH HHHHHH HHHHHH",
-//				"HHH              HHH",
-//				"HHH   HHHHHHHH   HHH",
-//				"    H          H    ",
-//				"HHH H HHHHHHHH HHHHH",
-//				"    H          H    ",
-//				"HHHHH HHHHHHHH HHHHH",
-				
-				"H HHH H HHHHH",
-				"H H   H   H H",
-				"H H HHHHH H H",
-				"             ",
-				"HHHH HHHHHH H",
-				"HHHH HHHHHH H",
-				"H     <     H",
-				"  HHHHHHHHH  ",
-				"H           H",
-				"HHHHHH HHHH H",
-				"H           H",
-				"H HHHHHHHHHHH"
-
-				
-//				" HHHHHHH HHH ",
-//				" H     H   H ",
-//				"   H H   H HH",
-//				" HHH HHH H   ",
-//				" H  <  H HHHo",
-//				" H HHH H   H ",
-//				"         H H ",
-//				"HHHH HHHHH H ",
-//				"HHHH H   H   ",
-//				"HHHH   H   HH",
-//				"  o  H H!HHHH",
-//				" HHHHH!  H   "
-
-				
-//				" HHHHHHH HHH ",
-//				" H   < H   H ",
-//				"   H H   H HH",
-//				" HHH HHH H   ",
-//				" H     H HHHo",
-//				" H HHH H   H ",
-//				"         H H ",
-//				"HHHH HHHHH H ",
-//				"HHHH H   H   ",
-//				"HHHH   H   HH",
-//				"  o  H!H HHHH",
-//				" HHHHH!!!H   "
+		"H HHH H HHHHH",
+		"H H   H   H H",
+		"H H HHHHH H H",
+		"             ",
+		"HHHH HHHHHH H",
+		"HHHH HHHHHH H",
+		"H     <     H",
+		"  HHHHHHHHH  ",
+		"H           H",
+		"HHHHHH HHHH H",
+		"H           H",
+		"H HHHHHHHHHHH"
 		
-		};
+	};
+	
+	private String[] maze3 = new String[]{
 
+		" HHHHHHH HHH ",
+		" H     H   H ",
+		"   H H   H HH",
+		" HHH HHH H   ",
+		" H  <  H HHHo",
+		" H HHH H   H ",
+		"         H H ",
+		"HHHH HHHHH H ",
+		"HHHH H   H   ",
+		"HHHH   H   HH",
+		"  o  H H!HHHH",
+		" HHHHH!  H   "
+
+	};
+	
+	private String[] mazeLines;
+	private int LINES;
+	private int COLUMNS;
+	private Square[][] maze;
+	
+	List<Ghost> ghosts;
+	Hero hero;
+
+	private int turn;
+
+	private String[] mazeLines() {
+		if (turn == 4) turn = 0;
+		if (turn == 0) return maze0;
+		if (turn == 1) return maze1;
+		if (turn == 2) return maze2;
+		if (turn == 3) return maze3;
+		return null;
 	}
 	
 
-	static {
+	{
+		playTurn();
+	}
+
+
+	private void playTurn() {
+		mazeLines = mazeLines();
+		LINES = mazeLines.length;
+		COLUMNS = mazeLines[0].length();
+		
+		ghosts = new ArrayList<Ghost>();
+		
 		Sound.play("plup2");
 		maze = new Square[LINES][];
 		
@@ -122,7 +134,7 @@ public class Zapman implements TextGame {
 	}
 
 	
-	private static void connectWithUpperAndLeft(int line, int column) {
+	private void connectWithUpperAndLeft(int line, int column) {
 		if (line != 0) {
 			maze[line    ][column].up = maze[line - 1][column];
 			maze[line - 1][column].down = maze[line    ][column];
@@ -135,10 +147,10 @@ public class Zapman implements TextGame {
 	}
 
 
-	static void putThingsInMaze() {
+	void putThingsInMaze() {
 		for (int line = 0; line < LINES; line++) {
 			for (int column = 0; column < COLUMNS; column++) {
-				String thing = mentos[line].substring(column, column + 1);
+				String thing = mazeLines[line].substring(column, column + 1);
 				Square square = maze[line][column];
 				if (thing.equals("<")) hero = new Hero(square);
 				if (thing.equals("!")) ghosts.add(new Ghost(square));
@@ -153,7 +165,7 @@ public class Zapman implements TextGame {
 	}
 
 
-	private static void connectBordersForWarping() {
+	private void connectBordersForWarping() {
 		for (int line = 0; line < LINES; line++)
 			connectFirstAndLastIn(line);
 		for (int column = 0; column < COLUMNS; column++)
@@ -162,7 +174,7 @@ public class Zapman implements TextGame {
 	}
 
 
-	private static void connectBottomAndTopIn(int column) {
+	private void connectBottomAndTopIn(int column) {
 		Square top = maze [0][column];
 		Square bottom = maze  [LINES -1][column];
 		top.up = bottom;
@@ -170,12 +182,11 @@ public class Zapman implements TextGame {
 	}
 
 
-	private static void connectFirstAndLastIn(int line) {
+	private void connectFirstAndLastIn(int line) {
 		Square first = maze [line][0];
 		Square last = maze  [line][COLUMNS -1];
 		first.left = last;
 		last.right = first;
-		
 	}
 
 
@@ -194,7 +205,7 @@ public class Zapman implements TextGame {
 	private String drawLine(int line) {
 		String lineString = "";
 		int column = 0;
-		while (column < mentos[line].length()) {
+		while (column < mazeLines[line].length()) {
 			lineString = lineString + drawThing(line, column);
 			column = column + 1;
 		}
@@ -216,6 +227,24 @@ public class Zapman implements TextGame {
 			ghost.move();
 		}
 		
+		if (!stillHasFood()) nextTurn();
+	}
+
+
+	private void nextTurn() {
+		turn = turn + 1;
+		playTurn();
+	}
+
+
+	private boolean stillHasFood() {
+		for (int line = 0; line < LINES; line++) {
+			for (int column = 0; column < COLUMNS; column++) {
+				Square square = maze[line][column];
+				if (square.hasFood) return true;
+			}
+		}
+		return false;
 	}
 
 
