@@ -7,6 +7,7 @@ package zapman;
 import java.util.ArrayList;
 import java.util.List;
 
+import textgame.GameLoop;
 import textgame.TextGame;
 
 public class Zapman implements TextGame {
@@ -233,6 +234,7 @@ public class Zapman implements TextGame {
 
 	private void nextTurn() {
 		turn = turn + 1;
+		GameLoop.millis = (int) (GameLoop.millis * 0.85);
 		playTurn();
 	}
 

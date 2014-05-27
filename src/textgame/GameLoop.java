@@ -15,6 +15,7 @@ public class GameLoop {
 	private int lastKey;
 	
 	private JFrame frame;
+	static public int millis = 300;
 	
 	
 	public GameLoop(TextGame game) {
@@ -94,7 +95,7 @@ public class GameLoop {
 	
 	private void waitALittle() {
 		try {
-			Thread.sleep(300);
+			Thread.sleep(millis);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
