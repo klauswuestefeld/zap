@@ -8,6 +8,7 @@ class Hero extends Being {
 	String direction;
 	String nextDirection = "none";
 	int points;
+	private int lasersLeft = 5;
 
 	Hero(Square square) {
 		square.accept(this);
@@ -39,7 +40,10 @@ class Hero extends Being {
 	}
 
 	void shoot() {
-		square.spreadLaser();
+		if (lasersLeft != 0) {
+			lasersLeft --;
+			square.spreadLaser();
+		}
 	}
 
 	void move() {
