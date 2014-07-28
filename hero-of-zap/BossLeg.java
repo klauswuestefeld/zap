@@ -1,4 +1,4 @@
-package hero_of_zap;
+
 
 class BossLeg extends Thing {
 

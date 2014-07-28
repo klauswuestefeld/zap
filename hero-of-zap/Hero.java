@@ -1,13 +1,13 @@
-package hero_of_zap;
 
-class Bob extends Thing {
+
+class Hero extends Thing {
 
 	boolean lookingLeft;
 
 	@Override
 	String character() {
-		if(lookingLeft) return "{";
-		return "}";
+		if(lookingLeft) return "<";
+		return ">";
 	}
 	
 	@Override
@@ -20,14 +20,12 @@ class Bob extends Thing {
 
 	@Override
 	boolean canCollideWith(Thing other) {
-		if (other instanceof Hero) drop(new HeartContainer());
 		return false;
 
 	}
 
 	@Override
 	void collideWith(Thing other) {
-		if (other instanceof Hero) disappear();
 	}
 
 }

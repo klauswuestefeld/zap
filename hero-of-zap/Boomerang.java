@@ -1,12 +1,10 @@
-package hero_of_zap;
-
-class BossLeftArm extends Thing {
+class Boomerang extends Thing {
 
 	boolean lookingLeft;
 
 	@Override
 	String character() {
-		return "/";
+		return "L";
 	}
 	
 	@Override
@@ -25,6 +23,8 @@ class BossLeftArm extends Thing {
 
 	@Override
 	void collideWith(Thing other) {
+		if (other instanceof Bob)  disappear();
+		if (other instanceof Flob) disappear();
 	}
 
 }

@@ -1,5 +1,3 @@
-package hero_of_zap;
-
 class HeroOfZap {
 
 	////////////////////////////Fields

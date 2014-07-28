@@ -1,24 +1,17 @@
-package hero_of_zap;
 
-class BossRightArm extends Thing {
+
+class Chest extends Thing {
 
 	boolean lookingLeft;
 
 	@Override
 	String character() {
-		return "O";
+		return "B";
 	}
 	
-	@Override
-	void act() {
-		
-	}
-	
-	@Override
-	int millisToWait() { return 1000; }
-
 	@Override
 	boolean canCollideWith(Thing other) {
+//		if (other instanceof Hero) drop(new ?());
 		return false;
 
 	}

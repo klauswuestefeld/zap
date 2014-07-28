@@ -1,12 +1,12 @@
-package hero_of_zap;
 
-class BossHead extends Thing {
+
+class BossLeftArm extends Thing {
 
 	boolean lookingLeft;
 
 	@Override
 	String character() {
-		return "O";
+		return "/";
 	}
 	
 	@Override

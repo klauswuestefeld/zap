@@ -1,12 +1,13 @@
-package hero_of_zap;
 
-class Boomerang extends Thing {
+
+class Flob extends Thing {
 
 	boolean lookingLeft;
 
 	@Override
 	String character() {
-		return "L";
+		if(lookingLeft) return "(";
+		return ")";
 	}
 	
 	@Override
@@ -19,14 +20,14 @@ class Boomerang extends Thing {
 
 	@Override
 	boolean canCollideWith(Thing other) {
+		if (other instanceof Hero) drop(new HeartContainer());
 		return false;
 
 	}
 
 	@Override
 	void collideWith(Thing other) {
-		if (other instanceof Bob)  disappear();
-		if (other instanceof Flob) disappear();
+		if (other instanceof Hero) disappear();
 	}
 
 }
