@@ -1,13 +1,13 @@
 package hero_of_zap;
 
-class Bob extends Thing {
+class Flob extends Thing {
 
 	boolean lookingLeft;
 
 	@Override
 	String character() {
-		if(lookingLeft) return "{";
-		return "}";
+		if(lookingLeft) return "(";
+		return ")";
 	}
 	
 	@Override
