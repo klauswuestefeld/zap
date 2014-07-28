@@ -14,3 +14,6 @@ class Square {
 	}
 
 }
+
+enum Direction {UP, DOWN, LEFT, RIGHT}
+
