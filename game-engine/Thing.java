@@ -1,5 +1,3 @@
-
-
 class Thing {
 
 	boolean hasDisappeared = false;
