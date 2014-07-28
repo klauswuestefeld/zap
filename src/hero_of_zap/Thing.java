@@ -2,6 +2,9 @@ package hero_of_zap;
 
 class Thing {
 
+	boolean hasDisappeared = false;
+	Thing droppedThing = null;
+
 	String character() { return "?"; }
 	
 	void act() {}
@@ -13,7 +16,8 @@ class Thing {
 	
 	void move(Direction direction) {}
 	
-	void disappear() {}
-	void drop(Thing other) {}
+	void disappear() { hasDisappeared = true; }
+	void drop(Thing other) { droppedThing = other; disappear(); }
+	boolean hasDisappeared() { return false; }
 	
 }
