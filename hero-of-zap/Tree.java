@@ -8,9 +8,4 @@ class Tree extends Thing {
 		return "T";
 	}
 	
-	@Override
-	boolean canCollideWith(Thing other) {
-		return false;
-
-	}
 }

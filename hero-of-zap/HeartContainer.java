@@ -9,11 +9,6 @@ class HeartContainer extends Thing {
 		return "H";
 	}
 	
-	@Override
-	boolean canCollideWith(Thing other) {
-		return false;
-
-	}
 
 	@Override
 	void collideWith(Thing other) {

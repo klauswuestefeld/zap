@@ -8,7 +8,6 @@ class Thing {
 	void act() {}
 	int millisToWait() { return -1; }
 
-	boolean canCollideWith(Thing other) { return false; }
 	void collideWith(Thing other) {}
 	
 	

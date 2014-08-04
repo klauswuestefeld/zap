@@ -9,15 +9,10 @@ class Chest extends Thing {
 		return "B";
 	}
 	
-	@Override
-	boolean canCollideWith(Thing other) {
-//		if (other instanceof Hero) drop(new ?());
-		return false;
-
-	}
 
 	@Override
 	void collideWith(Thing other) {
+//		if (other instanceof Hero) drop(new ?());
 	}
 
 }

@@ -11,9 +11,9 @@ class Square {
 	boolean isEmpty() {	return thing == null; }
 	
 	
-	void put(Thing other) {
-		if (thing != null) throw new IllegalStateException("Thomas, you cannot put " + other + " into a square that already contains a " + thing + ".");
-		thing = other;
+	void put(Thing newThing) {
+		if (thing != null) throw new IllegalStateException("Thomas, you cannot put " + newThing + " into a square that already contains a " + thing + ".");
+		thing = newThing;
 	}
 	
 	
@@ -26,17 +26,12 @@ class Square {
 			return;
 		}
 		
-		boolean can1 = thing.canCollideWith(other);
-		boolean can2 = other.canCollideWith(thing);
-		if (!can1) return;
-		if (!can2) return;
-		
 		thing.collideWith(other);
 		other.collideWith(thing);
 		
 		if (thing.hasDisappeared()) thing = thing.droppedThing;
 		if (other.hasDisappeared()) other = other.droppedThing;
-		if (thing != null && other != null) throw new IllegalStateException("Thomas, " + thing + " and " + other + " cannot occupy the same square.");
+		if (thing != null && other != null) return;
 		thing = other;
 	}
 
@@ -46,8 +41,7 @@ class Square {
 	}
 	
 	
-	@Override
-	public String toString() {
-		return getClass().getSimpleName();
+	String character() {
+		return thing == null ? " " : thing.character();
 	}
 }

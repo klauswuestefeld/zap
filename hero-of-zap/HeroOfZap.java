@@ -1,21 +1,13 @@
-class HeroOfZap {
+class HeroOfZap extends Game {
 
 	////////////////////////////Fields
 	
-	Square[][] grid;
 	
 	
 	
 	////////////////////////////Methods
 	
 	void start() {
-		grid = Utils.createGrid(9, 9);
-		Square square = grid[4][7];
-		square.put(new Thing());
-
-		square = grid[3][2];
-		square.put(new Bob());
-
 	}
 
 	
@@ -37,5 +29,10 @@ class HeroOfZap {
 	void shift() {
 		
 	}
-
+	
+	
+	public static void main(String[] args) {
+		new HeroOfZap();
+	}
 }
+

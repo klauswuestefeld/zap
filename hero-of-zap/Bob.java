@@ -16,16 +16,10 @@ class Bob extends Thing {
 	@Override
 	int millisToWait() { return 1000; }
 
-	@Override
-	boolean canCollideWith(Thing other) {
-		if (other instanceof Hero) drop(new HeartContainer());
-		return false;
-
-	}
 
 	@Override
 	void collideWith(Thing other) {
-		if (other instanceof Hero) disappear();
+		if (other instanceof Hero) drop(new HeartContainer());
 	}
 
 }
