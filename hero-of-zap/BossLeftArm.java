@@ -4,10 +4,6 @@ class BossLeftArm extends Thing {
 
 	boolean lookingLeft;
 
-	@Override
-	String character() {
-		return "/";
-	}
 	
 	@Override
 	void act() {
