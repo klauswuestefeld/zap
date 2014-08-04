@@ -13,6 +13,5 @@ class Thing {
 	
 	void disappear() { hasDisappeared = true; }
 	void drop(Thing other) { droppedThing = other; disappear(); }
-	boolean hasDisappeared() { return false; }
 	
 }

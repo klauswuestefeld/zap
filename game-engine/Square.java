@@ -29,8 +29,8 @@ class Square {
 		thing.collideWith(other);
 		other.collideWith(thing);
 		
-		if (thing.hasDisappeared()) thing = thing.droppedThing;
-		if (other.hasDisappeared()) other = other.droppedThing;
+		if (thing.hasDisappeared) thing = thing.droppedThing;
+		if (other.hasDisappeared) other = other.droppedThing;
 		if (thing != null && other != null) return;
 		thing = other;
 	}
