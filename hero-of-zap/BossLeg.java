@@ -4,10 +4,6 @@ class BossLeg extends Thing {
 
 	boolean lookingLeft;
 
-	@Override
-	String character() {
-		return "W";
-	}
 	
 	@Override
 	void act() {

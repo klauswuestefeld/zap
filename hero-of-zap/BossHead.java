@@ -2,10 +2,6 @@ class BossHead extends Thing {
 
 	boolean lookingLeft;
 
-	@Override
-	String character() {
-		return "O";
-	}
 	
 	@Override
 	void act() {

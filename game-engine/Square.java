@@ -40,8 +40,4 @@ class Square {
 		return neighbors.get(direction);
 	}
 	
-	
-	String character() {
-		return thing == null ? " " : thing.character();
-	}
 }

@@ -3,8 +3,6 @@ class Thing {
 	boolean hasDisappeared = false;
 	Thing droppedThing = null;
 
-	String character() { return "?"; }
-	
 	void act() {}
 	int millisToWait() { return -1; }
 

@@ -1,14 +1,5 @@
-
-
 class Hero extends Thing {
 
-	boolean lookingLeft;
-
-	@Override
-	String character() {
-		if(lookingLeft) return "<";
-		return ">";
-	}
 	
 	@Override
 	void act() {

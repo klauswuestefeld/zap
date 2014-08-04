@@ -2,10 +2,6 @@ class Boomerang extends Thing {
 
 	boolean lookingLeft;
 
-	@Override
-	String character() {
-		return "L";
-	}
 	
 	@Override
 	void act() {

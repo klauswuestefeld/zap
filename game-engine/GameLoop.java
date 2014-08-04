@@ -23,7 +23,6 @@ class GameLoop {
 		while (true) {
 			handleLastKey();
 //			game.pass();
-			printToConsole();
 			refreshGraphics();
 			refreshTitle();
 //			waitALittle();
@@ -70,21 +69,6 @@ class GameLoop {
 		}});
 	}
 	
-	
-	private void printToConsole() {
-		skipLines();
-		for (Square[] line : game.scene) {
-			for (Square square : line)
-				System.out.print(square.character());
-			System.out.println();
-		}
-	}
-	
-	
-	private void skipLines() {
-		System.out.println("\n\n\n\n");
-	}
-
 	
 	@SuppressWarnings("unused")
 	private void waitALittle() {
