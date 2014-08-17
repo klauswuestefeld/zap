@@ -5,9 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +17,7 @@ import javax.swing.JPanel;
 
 public class GraphicCanvas extends JPanel {
 
+	static final int SPRITE_SIZE = 21;
 	private final Game game;
 	private final Map<String, RenderedImage> imagesByName = new HashMap<String, RenderedImage>();
 
@@ -44,7 +43,7 @@ public class GraphicCanvas extends JPanel {
 
 
 	private AffineTransform position(int line, int column) {
-		return AffineTransform.getTranslateInstance(column*21, line*21);
+		return AffineTransform.getTranslateInstance(column*SPRITE_SIZE, line*SPRITE_SIZE);
 	}
 
 	

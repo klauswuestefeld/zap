@@ -1,5 +1,6 @@
 class Thing {
 
+	Direction direction = Direction.NONE;
 	boolean hasDisappeared = false;
 	Thing droppedThing = null;
 
