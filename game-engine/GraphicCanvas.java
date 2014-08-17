@@ -51,7 +51,7 @@ public class GraphicCanvas extends JPanel {
 	private RenderedImage sprite(Square square) {
 		Thing thing = square.thing;
 		if (thing == null)
-			return image("background");
+			return image("Background");
 		return image(thing.getClass().getSimpleName());
 	}
 
