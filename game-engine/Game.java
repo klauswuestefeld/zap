@@ -3,14 +3,21 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-class Game {
+class Game extends Utils {
 
 	Square[][] scene;
 
 	
 	Game() {
+		Utils.programmerName = programmerName();
 		start();
 		new GameLoop(this).start();
+	}
+
+
+	String programmerName() {
+		mustOverride("programmerName");
+		return null;
 	}
 
 
@@ -22,28 +29,30 @@ class Game {
 			for (int column = 0; column < columnCount; column++) {
 				Square square = new Square();
 				scene[line][column] = square;
-				String character = lines[line].substring(column, column);
+				String character = lines[line].substring(column, column + 1);
 				if (character.equals(" "))
 					continue;
-				square.put(thingRepresentedBy(character));
+				Thing thing = thingRepresentedBy(character);
+				if (thing == null) oops("method thingRepresentedBy() must return something for character '" + character + "'.");
+				square.put(thing);
 			}
 		}
 	}
 
 	
 	void start() {
-		mustOveride("start()");
+		mustOverride("start()");
 	}
 	
 	
 	Thing thingRepresentedBy(String character) {
-		mustOveride("thingRepresentedBy(Character character)");
+		mustOverride("thingRepresentedBy(Character character)");
 		return null;
 	}
 
 
-	void mustOveride(String method) {
-		throw new RuntimeException(getClass().getSimpleName() + " must override method " + method);
+	void mustOverride(String method) {
+		oops(getClass().getSimpleName() + " must override method " + method);
 	}
 
 	

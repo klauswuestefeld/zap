@@ -25,7 +25,7 @@ class GameLoop {
 //			game.pass();
 			refreshGraphics();
 			refreshTitle();
-//			waitALittle();
+			waitALittle();
 		}
 	}
 	
@@ -46,12 +46,16 @@ class GameLoop {
 
 
 	private void refreshGraphics() {
-		Square[][] screen = game.scene;
+		adaptSizeTo(game.scene);
+		canvas.repaint();
+	}
+
+
+	private void adaptSizeTo(Square[][] screen) {
 		Insets insets = frame.getInsets();
 		int width = screen[0].length * 40 + insets.left + insets.right;
 		int height = screen.length * 40 + insets.top + insets.bottom;
 		frame.setSize(width, height);
-		canvas.repaint();
 	}
 
 	
@@ -70,7 +74,6 @@ class GameLoop {
 	}
 	
 	
-	@SuppressWarnings("unused")
 	private void waitALittle() {
 		try {
 			Thread.sleep(300);

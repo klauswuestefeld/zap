@@ -1,0 +1,4 @@
+
+class Prisoner extends Thing {
+
+}

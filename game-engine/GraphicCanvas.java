@@ -13,27 +13,24 @@ import javax.swing.JPanel;
 
 public class GraphicCanvas extends JPanel {
 
-	@SuppressWarnings("unused")
 	private final Game game;
-	private volatile String[] screen;
 
 	
 	public GraphicCanvas(Game game) {
 		this.game = game;
-		setSize(new Dimension(2000, 2000));
+		setSize(new Dimension(4000, 4000));
 		setBackground(Color.BLACK);
 	}
 
 
 	@Override
 	public void paint(Graphics g) {
-		if (screen == null) return; 
-		
+		Square[][] scene = game.scene;
 		Graphics2D g2d = (Graphics2D) g;
-		for (int line = 0; line < screen.length; line++) {
-			String lineContent = screen[line];
-			for (int column = 0; column < lineContent.length(); column++)
-				g2d.drawRenderedImage(sprite(lineContent, column), position(line, column));
+		for (int lineNumber = 0; lineNumber < scene.length; lineNumber++) {
+			Square[] line = scene[lineNumber];
+			for (int columnNumber = 0; columnNumber < line.length; columnNumber++)
+				g2d.drawRenderedImage(sprite(scene[lineNumber][columnNumber]), position(lineNumber, columnNumber));
 		}
 	}
 
@@ -43,20 +40,14 @@ public class GraphicCanvas extends JPanel {
 	}
 
 	
-	private RenderedImage sprite(String string, int index) {
-//		return sprite(string.charAt(index));
-		throw new RuntimeException("Not ready yet.");
-	}
-
-
-	@SuppressWarnings("unused")
-	private RenderedImage sprite(String character) {
-//		if (game == null) return null;
-//		RenderedImage bufferedImage = game.imageFor(character);
-//		if (bufferedImage == null) System.out.println("Sprite nao registrada para caracter: '" + character +"'");
-//		return bufferedImage;
+	private RenderedImage sprite(Square square) {
+		Thing thing = square.thing;
+//		if (thing == null)
+//			return ImageIO.read(MainDemo.class.getResourceAsStream(filename));
 		return null;
 	}
+
+
 
 	private static final long serialVersionUID = 1L;
 }
