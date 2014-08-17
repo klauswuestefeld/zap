@@ -1,6 +1,6 @@
 class Thing extends Utils {
 
-	Direction direction = Direction.NONE;
+	Direction direction = none;
 	boolean hasDisappeared = false;
 	Thing droppedThing = null;
 

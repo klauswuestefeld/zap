@@ -1,6 +1,10 @@
 class Utils {
 
-	static Direction DOWN = Direction.DOWN;
+	static Direction up = Direction.up;
+	static Direction down = Direction.down;
+	static Direction left = Direction.left;
+	static Direction right = Direction.right;
+	static Direction none = Direction.none;
 	
 	static String programmerName = "Programmer";
 
