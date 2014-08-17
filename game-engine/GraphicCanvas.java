@@ -29,8 +29,9 @@ public class GraphicCanvas extends JPanel {
 		Graphics2D g2d = (Graphics2D) g;
 		for (int lineNumber = 0; lineNumber < scene.length; lineNumber++) {
 			Square[] line = scene[lineNumber];
-			for (int columnNumber = 0; columnNumber < line.length; columnNumber++)
-				g2d.drawRenderedImage(sprite(scene[lineNumber][columnNumber]), position(lineNumber, columnNumber));
+			for (int columnNumber = 0; columnNumber < line.length; columnNumber++) {
+//				g2d.drawRenderedImage(sprite(scene[lineNumber][columnNumber]), position(lineNumber, columnNumber));
+			}
 		}
 	}
 
@@ -42,8 +43,14 @@ public class GraphicCanvas extends JPanel {
 	
 	private RenderedImage sprite(Square square) {
 		Thing thing = square.thing;
-//		if (thing == null)
-//			return ImageIO.read(MainDemo.class.getResourceAsStream(filename));
+		if (thing == null)
+			return image("background");
+		return null;
+	}
+
+
+	private RenderedImage image(String filename) {
+//		return ImageIO.read(game.getClass().getResourceAsStream(filename + ".png"));
 		return null;
 	}
 
