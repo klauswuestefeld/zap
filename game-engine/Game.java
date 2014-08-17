@@ -29,6 +29,8 @@ class Game extends Utils {
 			for (int column = 0; column < columnCount; column++) {
 				Square square = new Square();
 				scene[line][column] = square;
+				if (line > 0) connectUpAndDown(scene[line - 1][column], square);
+				if (column > 0) connectLeftAndRight(scene[line][column - 1], square);
 				String character = lines[line].substring(column, column + 1);
 				if (character.equals(" "))
 					continue;
@@ -40,6 +42,18 @@ class Game extends Utils {
 	}
 
 	
+	private void connectUpAndDown(Square squareUp, Square squareDown) {
+		squareUp.setNeighbor(down, squareDown);
+		squareDown.setNeighbor(up, squareUp);
+	}
+
+
+	private void connectLeftAndRight(Square squareLeft, Square squareRight) {
+		squareLeft.setNeighbor(right, squareRight);
+		squareRight.setNeighbor(left, squareLeft);
+	}
+
+
 	void start() {
 		mustOverride("start()");
 	}
