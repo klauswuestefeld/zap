@@ -1,7 +1,10 @@
 class Bob extends Thing {
 
 	boolean lookingLeft;
-
+	
+	Bob() {
+		direction = left;
+	}
 	
 	@Override
 	void act() {
