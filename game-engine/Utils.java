@@ -1,5 +1,7 @@
 class Utils {
 
+	static Direction DOWN = Direction.DOWN;
+	
 	static String programmerName = "Programmer";
 
 	static Square[][] createGrid(int lines, int columns) {

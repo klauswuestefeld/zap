@@ -1,4 +1,4 @@
-class Thing {
+class Thing extends Utils {
 
 	Direction direction = Direction.NONE;
 	boolean hasDisappeared = false;
