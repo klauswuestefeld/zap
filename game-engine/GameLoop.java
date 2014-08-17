@@ -52,6 +52,7 @@ class GameLoop {
 
 
 	private void adaptSizeTo(Square[][] screen) {
+		if (screen == null) Utils.oops("you must call setScene().");
 		Insets insets = frame.getInsets();
 		int width = screen[0].length * 40 + insets.left + insets.right;
 		int height = screen.length * 40 + insets.top + insets.bottom;
