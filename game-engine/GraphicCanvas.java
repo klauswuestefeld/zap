@@ -5,8 +5,14 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 
@@ -14,6 +20,7 @@ import javax.swing.JPanel;
 public class GraphicCanvas extends JPanel {
 
 	private final Game game;
+	private final Map<String, RenderedImage> imagesByName = new HashMap<String, RenderedImage>();
 
 	
 	public GraphicCanvas(Game game) {
@@ -30,7 +37,7 @@ public class GraphicCanvas extends JPanel {
 		for (int lineNumber = 0; lineNumber < scene.length; lineNumber++) {
 			Square[] line = scene[lineNumber];
 			for (int columnNumber = 0; columnNumber < line.length; columnNumber++) {
-//				g2d.drawRenderedImage(sprite(scene[lineNumber][columnNumber]), position(lineNumber, columnNumber));
+				g2d.drawRenderedImage(sprite(scene[lineNumber][columnNumber]), position(lineNumber, columnNumber));
 			}
 		}
 	}
@@ -45,13 +52,23 @@ public class GraphicCanvas extends JPanel {
 		Thing thing = square.thing;
 		if (thing == null)
 			return image("background");
-		return null;
+		return image(thing.getClass().getSimpleName());
 	}
 
 
-	private RenderedImage image(String filename) {
-//		return ImageIO.read(game.getClass().getResourceAsStream(filename + ".png"));
-		return null;
+	private RenderedImage image(String name) {
+		RenderedImage image = imagesByName.get(name);
+		if (image != null) return image;
+		
+		String filename = name + ".png";
+		try {
+			InputStream resource = game.getClass().getResourceAsStream(filename);
+			image = ImageIO.read(resource);
+			imagesByName.put(name, image);
+			return image;
+		} catch (Exception e) {
+			return Utils.oops(" I coud not load image " + filename);
+		}
 	}
 
 

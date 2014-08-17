@@ -6,7 +6,7 @@ class Utils {
 		return null;
 	}
 
-	static void oops(String message) {
+	static <T> T oops(String message) {
 		throw new Oops(programmerName + ", " + message);
 	}
 
