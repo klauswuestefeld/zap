@@ -51,7 +51,10 @@ public class GraphicCanvas extends JPanel {
 		Thing thing = square.thing;
 		if (thing == null)
 			return image("Background");
-		return image(thing.getClass().getSimpleName());
+		String imageName = thing.getClass().getSimpleName();
+		if (thing.direction != Direction.NONE)
+			imageName = imageName + "-" + thing.direction.name().toLowerCase();
+		return image(imageName);
 	}
 
 
