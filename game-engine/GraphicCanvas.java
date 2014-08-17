@@ -44,7 +44,7 @@ public class GraphicCanvas extends JPanel {
 
 
 	private AffineTransform position(int line, int column) {
-		return AffineTransform.getTranslateInstance(column*40, line*40);
+		return AffineTransform.getTranslateInstance(column*21, line*21);
 	}
 
 	
