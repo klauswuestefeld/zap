@@ -22,7 +22,7 @@ class GameLoop {
 	public void start()  {
 		while (true) {
 			handleLastKey();
-//			game.pass();
+			act();
 			refreshGraphics();
 			refreshTitle();
 			waitALittle();
@@ -30,6 +30,13 @@ class GameLoop {
 	}
 	
 	
+	private void act() {
+		for (Square[] line : game.scene)
+			for (Square square : line)
+				if (square.thing != null) square.thing.act();
+	}
+
+
 	private void refreshTitle() {
 		frame.setTitle(game.title());
 	}
