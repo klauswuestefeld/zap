@@ -27,7 +27,7 @@ class Game extends Utils {
 		scene = new Square[lineCount][columnCount];
 		for (int line = 0; line < lineCount; line++) {
 			for (int column = 0; column < columnCount; column++) {
-				Square square = new Square();
+				Square square = new Square(line, column);
 				scene[line][column] = square;
 				if (line > 0) connectUpAndDown(scene[line - 1][column], square);
 				if (column > 0) connectLeftAndRight(scene[line][column - 1], square);

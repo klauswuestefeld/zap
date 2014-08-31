@@ -7,7 +7,16 @@ class Square extends Utils {
 
 	Map<Direction, Square> neighbors = new HashMap<Direction, Square>();
 
+	int line;
+	int column;
+
 	
+	public Square(int line, int column) {
+		this.line = line;
+		this.column = column;
+	}
+
+
 	boolean isEmpty() {	return thing == null; }
 	
 	
