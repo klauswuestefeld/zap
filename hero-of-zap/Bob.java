@@ -9,12 +9,12 @@ class Bob extends Thing {
 	
 	@Override
 	void act() {
-		step();
 		if (hero.square.column > square.column) direction = right;
 		if (hero.square.column < square.column) direction = left;
 		System.out.println(hero.square.column + " " + square.column);
 		if (hero.square.line > square.line) direction = down;
 		if (hero.square.line < square.line) direction = up;
+		step();
 	}
 	
 	@Override
