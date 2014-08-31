@@ -30,7 +30,7 @@ class HeroOfZap extends Game {
 		if (character.equals("V")) return hero;
 		if (character.equals("H")) return new Tree();
 		if (character.equals("O")) return new Chest();
-		if (character.equals("<")) return new Bob();
+		if (character.equals("<")) return new Bob(hero);
 		return null;
 	}
 	
