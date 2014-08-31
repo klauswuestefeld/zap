@@ -22,6 +22,10 @@ class Square extends Utils {
 	
 	void put(Thing newThing) {
 		if (thing != null) oops("you cannot put " + newThing + " into a square that already contains a " + thing + ".");
+		
+		Square oldSquare = newThing.square;
+		if (oldSquare != null) oldSquare.thing = null;
+		
 		thing = newThing;
 		thing.square = this;
 	}

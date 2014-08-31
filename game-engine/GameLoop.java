@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 
-class GameLoop {
+class GameLoop extends Utils {
 	
 	Game game;
 	GraphicCanvas canvas;
@@ -33,7 +33,12 @@ class GameLoop {
 	private void act() {
 		for (Square[] line : game.scene)
 			for (Square square : line)
-				if (square.thing != null) square.thing.act();
+				if (square.thing != null) {
+					Thing t = square.thing;
+					t.act();
+					if (square.thing != null && square.thing.square != square) oops("Wrong square.");
+					if (t.square != null && t.square.thing != t) oops("Wrong thing!");
+				}
 	}
 
 
