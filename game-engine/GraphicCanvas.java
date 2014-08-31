@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 
 public class GraphicCanvas extends JPanel {
 
+	static final int PIXEL_SIZE = 3;
 	static final int SPRITE_SIZE = 21;
 	private final Game game;
 	private final Map<String, RenderedImage> imagesByName = new HashMap<String, RenderedImage>();
@@ -43,7 +44,9 @@ public class GraphicCanvas extends JPanel {
 
 
 	private AffineTransform position(int line, int column) {
-		return AffineTransform.getTranslateInstance(column*SPRITE_SIZE, line*SPRITE_SIZE);
+		AffineTransform ret = AffineTransform.getTranslateInstance(column*SPRITE_SIZE*PIXEL_SIZE, line*SPRITE_SIZE*PIXEL_SIZE);
+		ret.concatenate(AffineTransform.getScaleInstance(PIXEL_SIZE, PIXEL_SIZE));
+		return ret;
 	}
 
 	
@@ -69,6 +72,7 @@ public class GraphicCanvas extends JPanel {
 			imagesByName.put(name, image);
 			return image;
 		} catch (Exception e) {
+			System.err.println(e.getClass() + ": " + e.getMessage());
 			return Utils.oops(" I coud not load image " + filename);
 		}
 	}
