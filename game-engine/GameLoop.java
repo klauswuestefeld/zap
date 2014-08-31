@@ -55,8 +55,8 @@ class GameLoop {
 		if (screen == null) Utils.oops("you must call setScene().");
 
 		Insets insets = frame.getInsets();
-		int width = screen[0].length * GraphicCanvas.SPRITE_SIZE + insets.left + insets.right;
-		int height = screen.length * GraphicCanvas.SPRITE_SIZE + insets.top + insets.bottom;
+		int width = screen[0].length * GraphicCanvas.SPRITE_SIZE * GraphicCanvas.PIXEL_SIZE + insets.left + insets.right;
+		int height = screen.length * GraphicCanvas.SPRITE_SIZE * GraphicCanvas.PIXEL_SIZE + insets.top + insets.bottom;
 		frame.setSize(width, height);
 	}
 
