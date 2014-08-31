@@ -2,8 +2,7 @@ class Thing extends Utils {
 
 	Square square;
 	Direction direction = none;
-	boolean hasDisappeared = false;
-	Thing droppedThing = null;
+	boolean hasDisappeared;
 
 	////////////////////////////////////////////// Can override:
 	
@@ -20,7 +19,11 @@ class Thing extends Utils {
 		if (neighbor == null) return;
 		neighbor.accept(this);
 	}
-	void disappear() { hasDisappeared = true; }
-	void drop(Thing other) { droppedThing = other; disappear(); }
+	void disappear() { hasDisappeared = true; if (square != null) square.remove(this); }
+	void drop(Thing other) {
+		Square s = square;
+		disappear();
+		s.accept(other);
+	}
 	
 }

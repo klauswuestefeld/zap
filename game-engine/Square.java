@@ -27,23 +27,27 @@ class Square extends Utils {
 	}
 	
 	
-	void clear() { thing = null; }
+	void remove(Thing thing) {
+		if (this.thing != thing) oops("Removing the wrong thing.");
+		thing.square = null;
+		this.thing = null;
+	}
 	
 	
-	boolean accept(Thing other) {
-		if (thing != null) {
-			thing.collideWith(other);
-			other.collideWith(thing);
-			
-			if (thing.hasDisappeared) thing = thing.droppedThing;
-			if (other.hasDisappeared) other = other.droppedThing;
-			if (thing != null && other != null) return false;
-		}
+	void accept(Thing other) {
+		if (other == null) oops("Square cannot accept a null thing.");
 
-		other.square.thing = null;
-		other.square = this;
-		thing = other;
-		return true;
+		if (thing == null) {
+			put(other);
+			return;
+		}
+		
+		Thing t = thing;
+		other.collideWith(t);
+		t.collideWith(other);
+
+		if (t.hasDisappeared && !other.hasDisappeared)
+			put(other);
 	}
 
 	
@@ -51,7 +55,6 @@ class Square extends Utils {
 		return neighbors.get(direction);
 	}
 	void setNeighbor(Direction direction, Square neighbor) {
-		neighbor.toString();
 		neighbors.put(direction, neighbor);
 	}
 	
