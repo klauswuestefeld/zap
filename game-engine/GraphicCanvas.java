@@ -53,7 +53,7 @@ public class GraphicCanvas extends JPanel {
 	private RenderedImage sprite(Square square) {
 		Thing thing = square.thing;
 		if (thing == null)
-			return image("Background");
+			return image(game.getClass().getSimpleName()+"-Background");
 		String imageName = thing.getClass().getSimpleName();
 		if (thing.direction != Direction.none)
 			imageName = imageName + "-" + thing.direction.name().toLowerCase();
