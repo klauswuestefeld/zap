@@ -72,8 +72,7 @@ public class GraphicCanvas extends JPanel {
 			imagesByName.put(name, image);
 			return image;
 		} catch (Exception e) {
-			System.err.println(e.getClass() + ": " + e.getMessage());
-			return Utils.oops(" I coud not load image " + filename);
+			return Utils.oops("I could not load image " + filename);
 		}
 	}
 

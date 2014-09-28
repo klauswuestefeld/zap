@@ -13,6 +13,7 @@ class Utils {
 	}
 
 	static <T> T oops(String message) {
+		System.err.println("\n\n");
 		throw new Oops(programmerName + ", " + message);
 	}
 
