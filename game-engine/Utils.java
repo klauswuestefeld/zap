@@ -1,3 +1,5 @@
+import java.util.Random;
+
 class Utils {
 
 	static Direction up = Direction.up;
@@ -17,5 +19,9 @@ class Utils {
 		throw new Oops(programmerName + ", " + message);
 	}
 
+	static Random random = new Random();
+	static int random(int max) {
+		return random.nextInt(max + 1);
+	}
 }
 
