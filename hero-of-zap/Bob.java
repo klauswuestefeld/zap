@@ -1,8 +1,8 @@
 class Bob extends Thing {
 
-	Hero hero;
+	Thing hero;
 	
-	Bob(Hero hero) {
+	Bob(Thing hero) {
 		direction = left;
 		this.hero = hero;
 	}
@@ -11,7 +11,6 @@ class Bob extends Thing {
 	void act() {
 		if (hero.square.column > square.column) direction = right;
 		if (hero.square.column < square.column) direction = left;
-		System.out.println(hero.square.column + " " + square.column);
 		if (hero.square.line > square.line) direction = down;
 		if (hero.square.line < square.line) direction = up;
 		step();
@@ -23,7 +22,7 @@ class Bob extends Thing {
 
 	@Override
 	void collideWith(Thing other) {
-		if (other instanceof Hero) drop(new HeartContainer());
+//		if (other instanceof Hero) drop(new Heart());
 	}
 
 }

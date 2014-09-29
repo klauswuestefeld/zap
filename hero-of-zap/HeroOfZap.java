@@ -58,12 +58,15 @@ class HeroOfZap extends Game {
 		hero.down();
 	}
 	void space() {
-		
+		hero.hit();
 	}
 	void shift() {
 		
 	}
 	
+	String title(){
+		return "Lives: " + hero.lives + "/" + hero.livesLimit;
+	}
 	
 	public static void main(String[] args) {
 		new HeroOfZap();

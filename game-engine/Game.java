@@ -75,7 +75,7 @@ class Game extends Utils {
 	}
 
 
-	public String title() {
+	String title() {
 		return "Use arrow keys, Space and Enter.";
 	}
 

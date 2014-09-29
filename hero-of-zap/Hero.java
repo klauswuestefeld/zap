@@ -1,4 +1,7 @@
 class Hero extends Thing {
+	
+	int lives = 6;
+	int livesLimit = 6;
 
 	Hero() {
 		direction = down;
@@ -15,6 +18,11 @@ class Hero extends Thing {
 
 	@Override
 	void collideWith(Thing other) {
+		if (other instanceof Bob) lives = lives - 1;
+		if (other instanceof Heart) lives = lives + 1;
+		if (lives > livesLimit) lives = livesLimit;
+		if (other instanceof HeartContainer) livesLimit = livesLimit + 2;
+		if (lives == 0) gameOver();
 	}
 
 	void left() {
@@ -38,4 +46,17 @@ class Hero extends Thing {
 		step();
 	}
 
+	void hit() {
+		Square neighbor = square.neighbor(direction);
+		if (neighbor == null) return;
+		Thing punchBag = neighbor.thing;
+		if (punchBag == null) return;
+		if (punchBag instanceof Bob) {
+			if (random(2) == 1)
+				punchBag.drop(new Heart());
+			else
+				punchBag.disappear();
+		}
+		if (punchBag instanceof Chest) punchBag.drop(new HeartContainer());
+	}
 }

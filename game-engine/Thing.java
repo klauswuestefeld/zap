@@ -26,4 +26,8 @@ class Thing extends Utils {
 		s.accept(other);
 	}
 	
+	protected void gameOver() {
+		System.exit(0);
+	}
+	
 }
