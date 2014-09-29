@@ -19,9 +19,9 @@ class Utils {
 		throw new Oops(programmerName + ", " + message);
 	}
 
-	static Random random = new Random();
+	static Random randomGenerator = new Random();
 	static int random(int max) {
-		return random.nextInt(max + 1);
+		return randomGenerator.nextInt(max + 1);
 	}
 }
 
