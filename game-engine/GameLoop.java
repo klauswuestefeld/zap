@@ -1,6 +1,8 @@
 import java.awt.Insets;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 
@@ -31,14 +33,16 @@ class GameLoop extends Utils {
 	
 	
 	private void act() {
+		List<Thing> things = new ArrayList<Thing>();
 		for (Square[] line : game.scene)
 			for (Square square : line)
 				if (square.thing != null) {
-					Thing t = square.thing;
-					t.act();
-					if (square.thing != null && square.thing.square != square) oops("Wrong square.");
-					if (t.square != null && t.square.thing != t) oops("Wrong thing!");
+					things.add(square.thing);
 				}
+		for (Thing t : things){
+			t.act();
+			if (t.square != null && t.square.thing != t) oops("Wrong thing!");
+		}
 	}
 
 
