@@ -65,7 +65,7 @@ class HeroOfZap extends Game {
 	}
 	
 	String title(){
-		return "Lives: " + hero.lives + "/" + hero.livesLimit;
+		return "Lives: " + hero.lives + "/"   + hero.livesLimit;
 	}
 	
 	public static void main(String[] args) {
