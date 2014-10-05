@@ -1,3 +1,9 @@
+import static java.awt.event.KeyEvent.VK_DOWN;
+import static java.awt.event.KeyEvent.VK_LEFT;
+import static java.awt.event.KeyEvent.VK_RIGHT;
+import static java.awt.event.KeyEvent.VK_SPACE;
+import static java.awt.event.KeyEvent.VK_UP;
+
 import java.awt.Insets;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -10,7 +16,6 @@ class GameLoop extends Utils {
 	
 	Game game;
 	GraphicCanvas canvas;
-	int lastKey;
 	
 	JFrame frame;
 	
@@ -23,7 +28,6 @@ class GameLoop extends Utils {
 
 	public void start()  {
 		while (true) {
-			handleLastKey();
 			act();
 			refreshGraphics();
 			refreshTitle();
@@ -51,13 +55,13 @@ class GameLoop extends Utils {
 	}
 
 
-	private void handleLastKey() {
-		if (lastKey == KeyEvent.VK_SPACE) game.space();
-		if (lastKey == KeyEvent.VK_UP) game.up();
-		if (lastKey == KeyEvent.VK_DOWN) game.down();
-		if (lastKey == KeyEvent.VK_LEFT) game.left();
-		if (lastKey == KeyEvent.VK_RIGHT) game.right();
-		lastKey = 0;
+	private void handleKey(int key) {
+		if (key == VK_SPACE) game.space();
+		if (key == VK_UP) game.up();
+		if (key == VK_DOWN) game.down();
+		if (key == VK_LEFT) game.left();
+		if (key == VK_RIGHT) game.right();
+		refreshGraphics();
 	}
 
 
@@ -87,7 +91,7 @@ class GameLoop extends Utils {
 		frame.setVisible(true);
 		
 		canvas.addKeyListener(new KeyAdapter() { @Override public void keyPressed(KeyEvent e) {
-			lastKey = e.getKeyCode();
+			handleKey(e.getKeyCode());
 		}});
 	}
 	
