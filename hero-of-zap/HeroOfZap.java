@@ -2,6 +2,7 @@ class HeroOfZap extends Game {
 
 	////////////////////////////Fields
 	Hero hero;
+	int map;
 	
 	
 	
@@ -13,6 +14,7 @@ class HeroOfZap extends Game {
 	
 	void start() {
 		hero = new Hero();
+		map = 0;
 		
 		setScene(
 				"HHHHHHHHH",
@@ -31,14 +33,14 @@ class HeroOfZap extends Game {
 		if (character.equals("H")) return new Tree();
 		if (character.equals("O")) return new Chest();
 		if (character.equals("<")) return new Bob(hero);
+		if (character.equals("F")) return new Flob(hero);
 		return null;
 	}
-	
-	void left() {
-		hero.left();
-	}
-	void right() {
-		if (hero.square.neighbor(right) == null) setScene(
+
+	private void checkNextScene() {
+		if (hero.square.neighbor(right) != null) return;
+		if (map == 0) {
+			setScene(
 				"HHHHHHHHH",
 				"H       H",
 				"H  < <  H",
@@ -48,7 +50,31 @@ class HeroOfZap extends Game {
 				"H  < <  H",
 				"H       H",
 				"HHHHHHHHH");
-				
+			map = map + 1;
+			return;
+		}
+		
+		if (map  == 1) {
+			setScene(
+				"HHHHHHHHH",
+				"H       H",
+				"H  F F  H",
+				"         ",
+				"V   O    ",
+				"         ",
+				"H  F F  H",
+				"H       H",
+				"HHHHHHHHH");
+			map = map + 1;
+		}
+	}
+
+	
+	void left() {
+		hero.left();
+	}
+	void right() {
+		checkNextScene();
 		hero.right();
 	}
 	void up() {

@@ -1,6 +1,12 @@
 class Flob extends Thing {
 
-	boolean lookingLeft;
+	Thing hero;
+	
+	Flob(Thing hero) {
+		direction = left;
+		this.hero = hero;
+	}
+
 
 	
 	@Override
