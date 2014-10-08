@@ -6,7 +6,7 @@ class Pedestrian extends Thing {
 	
 	void act() {
 		if (square.neighbor(down)==null){
-			backToTop();
+			disappear();
 			return;
 		}
 		direction = down;
@@ -14,25 +14,6 @@ class Pedestrian extends Thing {
 		direction = none;
 	}
 
-	void backToTop() {
-		direction = up;
-		step();
-		step();
-		step();
-		direction = left;
-		step();
-		step();
-		step();
-		step();
-		step();
-		direction = right;
-
-		int steps = random(5);
-		while (steps > 0){
-			step();
-			steps = steps - 1;
-		}
-		direction = none;
-	}
+	
 	
 }

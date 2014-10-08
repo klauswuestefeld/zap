@@ -47,6 +47,7 @@ class GameLoop extends Utils {
 			t.act();
 			if (t.square != null && t.square.thing != t) oops("Wrong thing!");
 		}
+		game.act();
 	}
 
 
