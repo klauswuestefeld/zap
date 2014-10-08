@@ -9,7 +9,7 @@ public class AlanGame extends Game {
 
 	}
 
-	Thing car;
+	Car car;
 
 	@Override
 	String programmerName() {
@@ -47,5 +47,8 @@ public class AlanGame extends Game {
 		if (random(2) == 0) {
 			scene[0][random(5) + 1].accept(new Pedestrian());
 		}
+	}
+	String title() {
+		return "Your points = "+ car.points;
 	}
 }
