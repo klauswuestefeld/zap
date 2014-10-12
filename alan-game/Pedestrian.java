@@ -1,6 +1,3 @@
-import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
-
-
 class Pedestrian extends Thing {
 
 	
