@@ -30,9 +30,13 @@ class HeroOfZap extends Game {
 	
 	Thing thingRepresentedBy(String character) {
 		if (character.equals("V")) return hero;
+		if (character.equals("Ü")) return new BossHead();
+		if (character.equals("W")) return new BossLeg();
+		if (character.equals("<")) return new BossLeftArm();
+		if (character.equals(">")) return new BossRightArm();
 		if (character.equals("H")) return new Tree();
 		if (character.equals("O")) return new Chest();
-		if (character.equals("<")) return new Bob(hero);
+		if (character.equals("B")) return new Bob(hero);
 		if (character.equals("F")) return new Flob(hero);
 		return null;
 	}
@@ -43,11 +47,11 @@ class HeroOfZap extends Game {
 			setScene(
 				"HHHHHHHHH",
 				"H       H",
-				"H  < <  H",
+				"H  B B  H",
 				"         ",
 				"V   O    ",
 				"         ",
-				"H  < <  H",
+				"H  B B  H",
 				"H       H",
 				"HHHHHHHHH");
 			map = map + 1;
@@ -66,6 +70,21 @@ class HeroOfZap extends Game {
 				"H       H",
 				"HHHHHHHHH");
 			map = map + 1;
+			return;
+		}
+		if (map  == 2) {
+			setScene(
+				"HHHHHHHHH",
+				"H  <Ü>  H",
+				"H   W   H",
+				"         ",
+				"V        ",
+				"         ",
+				"H       H",
+				"H       H",
+				"HHHHHHHHH");
+			map = map + 1;
+			return;
 		}
 	}
 
