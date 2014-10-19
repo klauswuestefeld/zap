@@ -57,6 +57,12 @@ class Hero extends Thing {
 			else
 				punchBag.disappear();
 		}
+		if (punchBag instanceof Flob) {
+			if (random(2) == 1)
+				punchBag.drop(new Heart());
+			else
+				punchBag.disappear();
+		}
 		if (punchBag instanceof Chest) punchBag.drop(new HeartContainer());
 	}
 }

@@ -22,7 +22,7 @@ class Flob extends Thing {
 
 	@Override
 	void collideWith(Thing other) {
-		if (other instanceof Hero) drop(new HeartContainer());
+//		if (other instanceof Hero) drop(new Heart());
 	}
 
 }

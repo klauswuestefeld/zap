@@ -87,7 +87,9 @@ class Game extends Utils {
 	void space() {}
 	void enter() {}
 
+	void act() {}
 
+	
 	String fileNameFor(String character) {
 		return null;
 	}
