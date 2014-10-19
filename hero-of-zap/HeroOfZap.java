@@ -66,6 +66,7 @@ class HeroOfZap extends Game {
 				"H       H",
 				"HHHHHHHHH");
 			map = map + 1;
+			return;
 		}
 	}
 

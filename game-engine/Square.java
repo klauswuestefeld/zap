@@ -50,7 +50,7 @@ class Square extends Utils {
 		other.collideWith(t);
 		t.collideWith(other);
 
-		if (t.hasDisappeared && !other.hasDisappeared)
+		if (thing == null && !other.hasDisappeared)
 			put(other);
 	}
 

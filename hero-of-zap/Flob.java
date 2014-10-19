@@ -7,13 +7,15 @@ class Flob extends Thing {
 		this.hero = hero;
 	}
 
-
-	
 	@Override
 	void act() {
-		
+		if (hero.square.column < square.column) direction = right;
+		if (hero.square.column > square.column) direction = left;
+		if (hero.square.line < square.line) direction = down;
+		if (hero.square.line > square.line) direction = up;
+		step();
 	}
-	
+
 	@Override
 	int millisToWait() { return 1000; }
 
