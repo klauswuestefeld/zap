@@ -23,8 +23,9 @@ class Hero extends Thing {
 		if (lives > livesLimit) lives = livesLimit;
 		if (other instanceof HeartContainer) livesLimit = livesLimit + 2;
 		if (lives == 0) gameOver();
+		if (other instanceof Shot) lives = lives - 1;
 	}
-
+ 
 	void left() {
 		direction = left;
 		step();

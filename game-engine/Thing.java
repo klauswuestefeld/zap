@@ -15,6 +15,7 @@ class Thing extends Utils {
 	////////////////////////////////////////////// Can call:
 
 	void step() {
+		if (hasDisappeared) return;
 		Square neighbor = square.neighbor(direction);
 		if (neighbor == null) return;
 		neighbor.accept(this);

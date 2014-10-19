@@ -1,6 +1,7 @@
 class Flob extends Thing {
 
 	Thing hero;
+	int shotCounter = 0;
 	
 	Flob(Thing hero) {
 		direction = left;
@@ -14,6 +15,16 @@ class Flob extends Thing {
 		if (hero.square.line < square.line) direction = down;
 		if (hero.square.line > square.line) direction = up;
 		step();
+
+		if (shotCounter != 0) {
+			shotCounter = shotCounter - 1;
+			return;
+		}
+		if (hero.square.column > square.column)
+			if (hero.square.line == square.line) {
+				square.neighbor(right).accept(new Shot(right));
+				shotCounter = 5;
+			}
 	}
 
 	@Override
