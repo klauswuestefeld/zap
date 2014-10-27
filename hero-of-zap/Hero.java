@@ -2,6 +2,8 @@ class Hero extends Thing {
 	
 	int lives = 6;
 	int livesLimit = 6;
+	int map;
+	boolean hasBoomerang = true;
 
 	Hero() {
 		direction = down;
@@ -24,7 +26,12 @@ class Hero extends Thing {
 		if (other instanceof HeartContainer) livesLimit = livesLimit + 2;
 		if (lives == 0) gameOver();
 		if (other instanceof Shot) lives = lives - 1;
+		if (other instanceof Boomerang){
+			other.disappear();
+			hasBoomerang = true;
+		}
 	}
+	
  
 	void left() {
 		direction = left;
@@ -64,6 +71,20 @@ class Hero extends Thing {
 			else
 				punchBag.disappear();
 		}
-		if (punchBag instanceof Chest) punchBag.drop(new HeartContainer());
+		if (punchBag instanceof Chest){
+			if (map == 2) punchBag.drop(new Boomerang(none));
+			else punchBag.drop(new HeartContainer());
+		}
+	}
+
+	void shootBoomerang() {
+		if (hasBoomerang){
+			Square neighbor = square.neighbor(direction);
+			if (neighbor.thing == null){
+				neighbor.accept(new Boomerang(direction));
+				hasBoomerang = false;
+			}
+		}
+		
 	}
 }

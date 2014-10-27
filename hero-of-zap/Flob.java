@@ -25,6 +25,21 @@ class Flob extends Thing {
 				square.neighbor(right).accept(new Shot(right));
 				shotCounter = 5;
 			}
+		if (hero.square.column < square.column)
+			if (hero.square.line == square.line) {
+				square.neighbor(left).accept(new Shot(left));
+				shotCounter = 5;
+			}
+		if (hero.square.line < square.line)
+			if (hero.square.column == square.column) {
+				square.neighbor(up).accept(new Shot(up));
+				shotCounter = 5;
+			}
+		if (hero.square.line > square.line)
+			if (hero.square.column == square.column) {
+				square.neighbor(down).accept(new Shot(down));
+				shotCounter = 5;
+			}
 	}
 
 	@Override

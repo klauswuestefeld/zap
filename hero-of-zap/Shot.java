@@ -10,6 +10,6 @@ class Shot extends Thing {
 	}
 	
 	void collideWith(Thing other) {
-		if (!(other instanceof Shot)) disappear();
+		disappear();
 	}
 }

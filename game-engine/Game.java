@@ -85,7 +85,7 @@ class Game extends Utils {
 	void left() {}
 	void right() {}
 	void space() {}
-	void enter() {}
+	void shift() {}
 
 	void act() {}
 
@@ -93,5 +93,7 @@ class Game extends Utils {
 	String fileNameFor(String character) {
 		return null;
 	}
+
+
 
 }

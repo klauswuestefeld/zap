@@ -1,8 +1,14 @@
+//to do:
+//boomerang
+//u: r,u,r,u,r,u,u,l,u,l,u,l,l,d,l,d,l,d,d,r,d,r,d,r
+//l: u,l,u,l,u,l,l,d,l,d,l,d,d,r,d,r,d,r,r,u,r,u,r,u
+//d: l,d,l,d,l,d,d,r,d,r,d,r,r,u,r,u,r,u,u,l,u,l,u,l
+//r: d,r,d,r,d,r,r,u,r,u,r,u,u,l,u,l,u,l,l,d,l,d,l,d
+//boss
 class HeroOfZap extends Game {
 
 	////////////////////////////Fields
 	Hero hero;
-	int map;
 	
 	
 	
@@ -14,7 +20,7 @@ class HeroOfZap extends Game {
 	
 	void start() {
 		hero = new Hero();
-		map = 0;
+		hero.map = 0;
 		
 		setScene(
 				"HHHHHHHHH",
@@ -43,7 +49,7 @@ class HeroOfZap extends Game {
 
 	private void checkNextScene() {
 		if (hero.square.neighbor(right) != null) return;
-		if (map == 0) {
+		if (hero.map == 0) {
 			setScene(
 				"HHHHHHHHH",
 				"H       H",
@@ -54,11 +60,11 @@ class HeroOfZap extends Game {
 				"H  B B  H",
 				"H       H",
 				"HHHHHHHHH");
-			map = map + 1;
+			hero.map = hero.map + 1;
 			return;
 		}
 		
-		if (map  == 1) {
+		if (hero.map  == 1) {
 			setScene(
 				"HHHHHHHHH",
 				"H       H",
@@ -69,21 +75,35 @@ class HeroOfZap extends Game {
 				"H  F F  H",
 				"H       H",
 				"HHHHHHHHH");
-			map = map + 1;
+			hero.map = hero.map + 1;
 			return;
 		}
-		if (map  == 2) {
+		if (hero.map  == 2) {
+			setScene(
+				"HHHHHHHHH",
+				"H       H",
+				"H  HHH  H",
+				"   F BH  ",
+				"V  F OH  ",
+				"   F BH  ",
+				"H  HHH  H",
+				"H       H",
+				"HHHHHHHHH");
+			hero.map = hero.map + 1;
+			return;
+		}
+		if (hero.map  == 3) {
 			setScene(
 				"HHHHHHHHH",
 				"H  <Ü>  H",
 				"H   W   H",
-				"         ",
-				"V        ",
-				"         ",
+				"        H",
+				"V       H",
+				"        H",
 				"H       H",
 				"H       H",
 				"HHHHHHHHH");
-			map = map + 1;
+			hero.map = hero.map + 1;
 			return;
 		}
 	}
@@ -106,7 +126,7 @@ class HeroOfZap extends Game {
 		hero.hit();
 	}
 	void shift() {
-		
+		hero.shootBoomerang();
 	}
 	
 	String title(){

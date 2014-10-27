@@ -62,6 +62,7 @@ class GameLoop extends Utils {
 		if (key == VK_DOWN) game.down();
 		if (key == VK_LEFT) game.left();
 		if (key == VK_RIGHT) game.right();
+		if (key == KeyEvent.VK_SHIFT) game.shift();
 		refreshGraphics();
 	}
 
