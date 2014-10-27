@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.RenderedImage;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,33 +54,38 @@ public class GraphicCanvas extends JPanel {
 	private RenderedImage sprite(Square square) {
 		Thing thing = square.thing;
 		if (thing == null)
-			return image(game.getClass().getSimpleName()+"-Background");
-		String imageName = thing.getClass().getSimpleName();
+			return image(game.getClass().getSimpleName(), "Background");
+		String suffix = null;
 		if (thing.direction != Direction.none)
-			imageName = imageName + "-" + thing.direction.name().toLowerCase();
-		try {
-			return image(imageName);
-		} catch (Oops e) {
-			return image(thing.getClass().getSimpleName());
-		}
+			suffix = thing.direction.name().toLowerCase();
+		return image(thing.getClass().getSimpleName(), suffix);
 	}
 
 
-	private RenderedImage image(String name) {
-		RenderedImage image = imagesByName.get(name);
-		if (image != null) return image;
+	private RenderedImage image(String name, String suffix) {
+		String fullname = (suffix == null ? name : name + "-" + suffix) + ".png";
+
+		RenderedImage image = imagesByName.get(fullname);
+		image = loadImage(fullname);
+		if (image == null && suffix != null) { //Example: If "hero-right" is not found, try "hero".
+			image = image(name, null);
+		}
 		
-		String filename = name + ".png";
-		try {
-			InputStream resource = game.getClass().getResourceAsStream(filename);
-			image = ImageIO.read(resource);
-			imagesByName.put(name, image);
-			return image;
-		} catch (Exception e) {
-			return Utils.oops("I could not load image " + filename);
-		}
+		if (image == null) throw new Oops("Unable to load file " + fullname);
+		imagesByName.put(fullname, image);
+		return image;
 	}
 
+
+	private RenderedImage loadImage(String filename) {
+		InputStream resource = game.getClass().getResourceAsStream(filename);
+		if (resource == null) return null;
+		try {
+			return ImageIO.read(resource);
+		} catch (IOException e) {
+			throw new Oops("Error reading file " + filename);
+		}
+	}
 
 
 	private static final long serialVersionUID = 1L;
