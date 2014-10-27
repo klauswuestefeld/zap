@@ -10,9 +10,6 @@ class Utils {
 	
 	static String programmerName = "Programmer";
 
-	static Square[][] createGrid(int lines, int columns) {
-		return null;
-	}
 
 	static <T> T oops(String message) {
 		System.err.println("\n\n");
