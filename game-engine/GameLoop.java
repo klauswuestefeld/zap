@@ -44,6 +44,7 @@ class GameLoop extends Utils {
 					things.add(square.thing);
 				}
 		for (Thing t : things){
+			if (t.hasDisappeared) continue;
 			t.act();
 			if (t.square != null && t.square.thing != t) oops("Wrong thing!");
 		}

@@ -4,10 +4,6 @@ class Boomerang extends Thing {
 	private Direction r = right;
 	private Direction u = up;
 	private Direction l = left;
-	//u: r,u,r,u,r,u,u,l,u,l,u,l,l,d,l,d,l,d,d,r,d,r,d,r
-	//l: u,l,u,l,u,l,l,d,l,d,l,d,d,r,d,r,d,r,r,u,r,u,r,u
-	//d: l,d,l,d,l,d,d,r,d,r,d,r,r,u,r,u,r,u,u,l,u,l,u,l
-	//r: d,r,d,r,d,r,r,u,r,u,r,u,u,l,u,l,u,l,l,d,l,d,l,d
 	
 	Direction[] pathRight = new Direction[]{
 			d,r,d,r,d,r,r,u,r,u,r,u,u,l,u,l,u,l,l,d,l,d,l,d};

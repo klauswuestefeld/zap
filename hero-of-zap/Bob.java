@@ -17,12 +17,13 @@ class Bob extends Thing {
 	}
 	
 	@Override
-	int millisToWait() { return 1000; }
-
-
-	@Override
 	void collideWith(Thing other) {
-//		if (other instanceof Hero) drop(new Heart());
+		if (other instanceof Boomerang){
+			if (random(2) == 1)
+				drop(new Heart());
+			disappear();
+		}
 	}
+
 
 }
