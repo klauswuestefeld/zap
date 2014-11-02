@@ -9,7 +9,7 @@ class BossHead extends BossPart {
 	}
 	
 	void act() {
-		if (direction == left) {
+		if (direction == left && leg.square.neighbor(direction).thing == null) {
 			leftArm.direction = direction;
 			leftArm.step();
 			if (step()) {
@@ -19,7 +19,7 @@ class BossHead extends BossPart {
 				rightArm.step();
 			} else
 				direction = right;
-		} else {
+		} if (direction == right && leg.square.neighbor(direction).thing == null) {
 			rightArm.direction = direction;
 			rightArm.step();
 			if (step()) {
