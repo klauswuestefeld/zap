@@ -55,9 +55,7 @@ public class GraphicCanvas extends JPanel {
 		Thing thing = square.thing;
 		if (thing == null)
 			return image(game.getClass().getSimpleName(), "Background");
-		String suffix = null;
-		if (thing.direction != Direction.none)
-			suffix = thing.direction.name().toLowerCase();
+		String suffix = thing.direction.name().toLowerCase();
 		return image(thing.getClass().getSimpleName(), suffix);
 	}
 
