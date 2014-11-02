@@ -9,6 +9,7 @@ class HeroOfZap extends Game {
 
 	////////////////////////////Fields
 	Hero hero;
+	BossHead bossHead;
 	
 	
 	
@@ -21,25 +22,26 @@ class HeroOfZap extends Game {
 	void start() {
 		hero = new Hero();
 		hero.map = 0;
+		bossHead = new BossHead();
 		
 		setScene(
 				"HHHHHHHHH",
+				"H  <Ü>  H",
+				"H   W   H",
+				"H        ",
+				"H        ",
+				"H        ",
 				"H       H",
 				"H   V   H",
-				"H        ",
-				"H        ",
-				"H        ",
-				"H       H",
-				"H       H",
 				"HHHHHHHHH");
 	}
 	
 	Thing thingRepresentedBy(String character) {
 		if (character.equals("V")) return hero;
-		if (character.equals("Ü")) return new BossHead();
-		if (character.equals("W")) return new BossLeg();
-		if (character.equals("<")) return new BossLeftArm();
-		if (character.equals(">")) return new BossRightArm();
+		if (character.equals("Ü")) return bossHead;
+		if (character.equals("W")) return bossHead.leg;
+		if (character.equals("<")) return bossHead.leftArm;
+		if (character.equals(">")) return bossHead.rightArm;
 		if (character.equals("H")) return new Tree();
 		if (character.equals("O")) return new Chest();
 		if (character.equals("B")) return new Bob(hero);

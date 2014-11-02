@@ -38,20 +38,23 @@ class Square extends Utils {
 	}
 	
 	
-	void accept(Thing other) {
+	boolean accept(Thing other) {
 		if (other == null) oops("Square cannot accept a null thing.");
 
 		if (thing == null) {
 			put(other);
-			return;
+			return true;
 		}
 		
 		Thing t = thing;
 		other.collideWith(t);
 		t.collideWith(other);
 
-		if (thing == null && !other.hasDisappeared)
+		if (thing == null && !other.hasDisappeared){
 			put(other);
+			return true;
+		} else
+			return false;
 	}
 
 	

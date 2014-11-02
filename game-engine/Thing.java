@@ -14,11 +14,11 @@ class Thing extends Utils {
 	
 	////////////////////////////////////////////// Can call:
 
-	void step() {
-		if (hasDisappeared) return;
+	boolean step() {
+		if (hasDisappeared) return false;
 		Square neighbor = square.neighbor(direction);
-		if (neighbor == null) return;
-		neighbor.accept(this);
+		if (neighbor == null) return false;
+		return neighbor.accept(this);
 	}
 	void disappear() { hasDisappeared = true; if (square != null) square.remove(this); }
 	void drop(Thing other) {
