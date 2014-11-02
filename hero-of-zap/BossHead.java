@@ -20,12 +20,11 @@ class BossHead extends BossPart {
 		
 		if (bobsCounter != 0) {
 			bobsCounter = bobsCounter - 1;
-			return;
+		} else {		
+			leg.square.neighbor(left).accept(new Bob(hero));
+			leg.square.neighbor(right).accept(new Bob(hero));
+			   bobsCounter = 5;
 		}
-		
-		leg.square.neighbor(left).accept(new Bob(hero));
-		leg.square.neighbor(right).accept(new Bob(hero));
-		bobsCounter = 5;
 		
 		if (direction == left && leg.square.neighbor(direction).thing == null) {
 			leftArm.direction = direction;

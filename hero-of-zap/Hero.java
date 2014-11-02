@@ -13,17 +13,21 @@ class Hero extends Thing {
 	void act() {
 		if (square.neighbor(right) != null && square.neighbor(right).thing instanceof BossPart){
 			lives = lives - 1;
+			if (lives == 0) gameOver();
 			return;
 		}
 		if (square.neighbor(left) != null && square.neighbor(left) .thing instanceof BossPart){
 			lives = lives - 1;
+			if (lives == 0) gameOver();
 			return;
 		}
 		if (square.neighbor(up)   .thing instanceof BossPart){
 			lives = lives - 1;
+			if (lives == 0) gameOver();
 			return;
 		}
 		if (square.neighbor(down) .thing instanceof BossPart) lives = lives - 1;
+		if (lives == 0) gameOver();
 	}
 	
 	@Override
