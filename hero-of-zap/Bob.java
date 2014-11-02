@@ -9,13 +9,17 @@ class Bob extends Thing {
 	
 	@Override
 	void act() {
-		if (hero.square.column > square.column) direction = right;
-		if (hero.square.column < square.column) direction = left;
-		if (step()) return;
-		if (hasDisappeared) return; 
-		if (hero.square.line > square.line) direction = down;
-		if (hero.square.line < square.line) direction = up;
-		step();
+		if (hero.square.column != square.column) {
+			if (hero.square.column > square.column) direction = right;
+			if (hero.square.column < square.column) direction = left;
+			if (step()) return;
+			if (hasDisappeared) return;
+		}
+		if (hero.square.line != square.line) {
+			if (hero.square.line > square.line) direction = down;
+			if (hero.square.line < square.line) direction = up;
+			step();
+		}
 	}
 	
 	@Override
