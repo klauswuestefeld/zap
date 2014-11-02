@@ -3,7 +3,7 @@ class Hero extends Thing {
 	int lives = 6;
 	int livesLimit = 6;
 	int map;
-	boolean hasBoomerang = true;
+	boolean hasBoomerang = false;
 
 	Hero() {
 		direction = down;
@@ -11,7 +11,19 @@ class Hero extends Thing {
 	
 	@Override
 	void act() {
-		
+		if (square.neighbor(right) != null && square.neighbor(right).thing instanceof BossPart){
+			lives = lives - 1;
+			return;
+		}
+		if (square.neighbor(left) != null && square.neighbor(left) .thing instanceof BossPart){
+			lives = lives - 1;
+			return;
+		}
+		if (square.neighbor(up)   .thing instanceof BossPart){
+			lives = lives - 1;
+			return;
+		}
+		if (square.neighbor(down) .thing instanceof BossPart) lives = lives - 1;
 	}
 	
 	@Override
@@ -74,6 +86,9 @@ class Hero extends Thing {
 		if (punchBag instanceof Chest){
 			if (map == 2) punchBag.drop(new Boomerang(none));
 			else punchBag.drop(new HeartContainer());
+		}
+		if (punchBag instanceof BossPart) {
+			((BossPart)punchBag).hit();
 		}
 	}
 

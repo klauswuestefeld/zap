@@ -1,14 +1,32 @@
 class BossHead extends BossPart {
+	int lives = 10;
+	int bobsCounter = 5;
 
-	Thing leg      = new BossLeg();
-	Thing rightArm = new BossRightArm();
-	Thing leftArm  = new BossLeftArm();
+	BossPart leg      = new BossLeg();
+	BossPart rightArm = new BossRightArm();
+	BossPart leftArm  = new BossLeftArm();
+	Hero hero;
 
-	BossHead() {
+	BossHead(Hero hero) {
 		direction = right;
+		leg.head      = this;
+		rightArm.head = this;
+		leftArm.head  = this;
+		this.hero = hero;
 	}
 	
 	void act() {
+		if (direction == none) return;
+		
+		if (bobsCounter != 0) {
+			bobsCounter = bobsCounter - 1;
+			return;
+		}
+		
+		leg.square.neighbor(left).accept(new Bob(hero));
+		leg.square.neighbor(right).accept(new Bob(hero));
+		bobsCounter = 5;
+		
 		if (direction == left && leg.square.neighbor(direction).thing == null) {
 			leftArm.direction = direction;
 			leftArm.step();

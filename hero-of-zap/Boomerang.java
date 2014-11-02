@@ -22,12 +22,17 @@ class Boomerang extends Thing {
 		if (d == down)	path = pathDown;
 	}
 	
-	@Override
 	void act() {
 		if (path == null) return;
 		direction = path[location];
 		step();
 		location = location + 1;
 		if (location == 23) location = 0;
+	}
+	
+	void collideWith(Thing other) {
+		if (other instanceof BossPart) {
+			((BossPart)other).hit();
+		}
 	}
 }

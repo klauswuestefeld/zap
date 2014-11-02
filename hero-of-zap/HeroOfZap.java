@@ -22,12 +22,12 @@ class HeroOfZap extends Game {
 	void start() {
 		hero = new Hero();
 		hero.map = 0;
-		bossHead = new BossHead();
+		bossHead = new BossHead(hero);
 		
 		setScene(
 				"HHHHHHHHH",
-				"H  <Ü>  H",
-				"H   W   H",
+				"H       H",
+				"H       H",
 				"H        ",
 				"H        ",
 				"H        ",

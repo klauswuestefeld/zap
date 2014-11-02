@@ -11,6 +11,8 @@ class Bob extends Thing {
 	void act() {
 		if (hero.square.column > square.column) direction = right;
 		if (hero.square.column < square.column) direction = left;
+		if (step()) return;
+		if (hasDisappeared) return; 
 		if (hero.square.line > square.line) direction = down;
 		if (hero.square.line < square.line) direction = up;
 		step();
