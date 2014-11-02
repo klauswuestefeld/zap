@@ -1,10 +1,3 @@
-//to do:
-//boomerang
-//u: r,u,r,u,r,u,u,l,u,l,u,l,l,d,l,d,l,d,d,r,d,r,d,r
-//l: u,l,u,l,u,l,l,d,l,d,l,d,d,r,d,r,d,r,r,u,r,u,r,u
-//d: l,d,l,d,l,d,d,r,d,r,d,r,r,u,r,u,r,u,u,l,u,l,u,l
-//r: d,r,d,r,d,r,r,u,r,u,r,u,u,l,u,l,u,l,l,d,l,d,l,d
-//boss
 class HeroOfZap extends Game {
 
 	////////////////////////////Fields
